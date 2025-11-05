@@ -118,12 +118,9 @@ If you use this project in your research, please cite:
 }
 ```
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 For questions or suggestions, please contact:
 - Email: tearsblooms@gmail.com
 - GitHub Issues: [Project Issues Page](https://github.com/your-username/ChemNavigator/issues)
+
