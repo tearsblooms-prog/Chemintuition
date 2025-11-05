@@ -1,0 +1,259 @@
+import os
+import torch
+from torch.utils.data import DataLoader, random_split
+from torch.optim.lr_scheduler import MultiStepLR
+import torch.nn as nn
+from data import ReactionDataset, ATOM_FEATURE_SIZE, EDGE_FEATURE_SIZE
+from model import YieldMPNN
+from tqdm import tqdm
+import pandas as pd
+from torch_geometric.data import Data, Batch
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+import numpy as np
+from rdkit import RDLogger
+from functools import partial
+
+RDLogger.DisableLog('rdApp.warning')
+
+# --- Configuration ---
+BATCH_SIZE = 16
+EPOCHS = 250
+LEARNING_RATE = 0.00036402483412231295
+WEIGHT_DECAY = 1.2899495348204742e-05
+UNCERTAINTY_WEIGHT = 0.05522186434467659
+CONTRASTIVE_LAMBDA = 0.18708920225157885
+SPARSITY_ALPHA = 0.3627651040538812
+MPNN_HIDDEN_FEATS = 128
+MPNN_NUM_STEP_MESSAGE_PASSING = 4
+MPNN_READOUT_FEATS = 512
+PREDICT_HIDDEN_FEATS = 1024
+PROB_DROPOUT = 0.19174391519919806
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+def _load_condition_graph(chem_id: int, graph_store) -> Data:
+    x = torch.from_numpy(graph_store[f'chem_x_{chem_id}'])
+    edge_index = torch.from_numpy(graph_store[f'chem_ei_{chem_id}'])
+    edge_attr = torch.from_numpy(graph_store[f'chem_ea_{chem_id}'])
+    return Data(x=x, edge_index=edge_index, edge_attr=edge_attr, num_nodes=x.shape[0])
+
+
+def get_condition_seq_length(condition_vector, num_steps, feats_per_step):
+    condition_reshaped = condition_vector.view(num_steps, feats_per_step)
+    for i in range(num_steps - 1, -1, -1):
+        if condition_reshaped[i, 0] == 1.0: return i + 1
+    return 1
+
+
+def custom_collate_fn(batch_list, graph_store):
+    g1_list, g2_list, gp_list, condition_list, y_list = zip(*batch_list)
+    condition_lengths = [get_condition_seq_length(c, 20, 32) for c in condition_list]
+    sorted_indices = sorted(range(len(condition_lengths)), key=lambda k: condition_lengths[k], reverse=True)
+
+    g1_sorted = [g1_list[i] for i in sorted_indices]
+    g2_sorted = [g2_list[i] for i in sorted_indices]
+    gp_sorted = [gp_list[i] for i in sorted_indices]
+    cond_sorted = [condition_list[i] for i in sorted_indices]
+    y_sorted = [y_list[i] for i in sorted_indices]
+
+    g1_b = Batch.from_data_list(g1_sorted)
+    g2_b = Batch.from_data_list(g2_sorted)
+    gp_b = Batch.from_data_list(gp_sorted)
+    y_b = torch.stack(y_sorted, dim=0)
+
+    cond_b_reshaped = torch.stack(cond_sorted, dim=0).view(len(batch_list), 20, 32)
+    RCS_ID_INDICES = list(range(1, 14))
+    rcs_ids = cond_b_reshaped[:, :, RCS_ID_INDICES].long()
+
+    unique_ids_list = torch.unique(rcs_ids[rcs_ids != 0]).cpu().tolist()
+    valid_graphs, valid_id_to_graph_idx = [], {}
+    for id_val in unique_ids_list:
+        graph = _load_condition_graph(id_val, graph_store)
+        if graph.num_nodes > 0:
+            valid_id_to_graph_idx[id_val] = len(valid_graphs)
+            valid_graphs.append(graph)
+
+    cond_chem_graph_b = Batch.from_data_list(valid_graphs) if valid_graphs else None
+
+    rcs_graph_indices_b = torch.full_like(rcs_ids, -1)
+    for id_val, graph_idx in valid_id_to_graph_idx.items():
+        rcs_graph_indices_b[rcs_ids == id_val] = graph_idx
+
+    g1_b, g2_b, gp_b = g1_b.to(device), g2_b.to(device), gp_b.to(device)
+    y_b = y_b.to(device)
+    cond_chem_graph_b = cond_chem_graph_b.to(device) if cond_chem_graph_b else None
+    rcs_graph_indices_b = rcs_graph_indices_b.to(device)
+
+    return (g1_b, g2_b, gp_b, y_b, cond_chem_graph_b, rcs_graph_indices_b)
+
+
+def enable_mc_dropout(model_to_set):
+    for module in model_to_set.modules():
+        if module.__class__.__name__.startswith('Dropout'):
+            module.train()
+
+
+def run_evaluation_with_uncertainty(model_to_eval, dataloader, current_device, mean_y, std_y, num_forward_passes=5):
+    model_to_eval.eval()
+    if num_forward_passes > 1: enable_mc_dropout(model_to_eval)
+    preds_norm, logvars_norm, true_y = [], [], []
+    with torch.no_grad():
+        for (g1, g2, gp, y, c_graphs, c_indices) in dataloader:
+            y = y.to(current_device)
+            batch_preds, batch_logvars = [], []
+            for _ in range(num_forward_passes):
+                p_norm, l_norm, _, _, _ = model_to_eval(g1, g2, gp, c_graphs, c_indices)
+                batch_preds.append(p_norm)
+                batch_logvars.append(l_norm)
+            preds_norm.append(torch.stack(batch_preds, dim=0))
+            logvars_norm.append(torch.stack(batch_logvars, dim=0))
+            true_y.append(y)
+    if not true_y: return np.nan, np.nan, np.nan
+    preds, y_true = torch.cat(preds_norm, dim=1), torch.cat(true_y, dim=0)
+    preds_scaled = preds * std_y + mean_y
+    mean_pred = torch.mean(preds_scaled, dim=0)
+    y_true_np, y_pred_np = y_true.cpu().numpy(), mean_pred.cpu().numpy()
+    return mean_absolute_error(y_true_np, y_pred_np), np.sqrt(mean_squared_error(y_true_np, y_pred_np)), r2_score(
+        y_true_np, y_pred_np)
+
+
+def run_experiment(csv_path, npz_path, val_ratio, random_seed, experiment_name):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print(f"\nStarting Experiment: {experiment_name} on {device}")
+    results_dir = os.path.join('results', experiment_name)
+    os.makedirs(results_dir, exist_ok=True)
+
+    dataset = ReactionDataset(csv_path, npz_path)
+    val_size = int(len(dataset) * val_ratio)
+    train_size = len(dataset) - val_size
+    train_subset, val_subset = random_split(dataset, [train_size, val_size],
+                                            generator=torch.Generator().manual_seed(random_seed))
+    train_y_vals = dataset.data['y_val'].iloc[train_subset.indices].values
+    mean, std = np.mean(train_y_vals), np.std(train_y_vals)
+    mean_t, std_t = torch.tensor(mean, device=device), torch.tensor(std if std > 1e-6 else 1.0, device=device)
+    collate_with_graphs = partial(custom_collate_fn, graph_store=dataset.graph_store)
+    train_loader = DataLoader(train_subset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_with_graphs,
+                              drop_last=True)
+    val_loader = DataLoader(val_subset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_with_graphs)
+
+    model = YieldMPNN(node_in_feats=ATOM_FEATURE_SIZE, edge_in_feats=EDGE_FEATURE_SIZE,
+                         mpnn_hidden_feats=MPNN_HIDDEN_FEATS,
+                         mpnn_num_step_message_passing=MPNN_NUM_STEP_MESSAGE_PASSING,
+                         mpnn_readout_feats=MPNN_READOUT_FEATS,
+                         predict_hidden_feats=PREDICT_HIDDEN_FEATS,
+                         prob_dropout=PROB_DROPOUT).to(device)
+
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
+    criterion = nn.MSELoss(reduction='none')
+    cos_sim = nn.CosineSimilarity(dim=1)
+    scheduler = MultiStepLR(optimizer, milestones=[150, 200], gamma=0.1)
+    history, best_val_mae = [], float('inf')
+
+    for epoch in range(1, EPOCHS + 1):
+        model.train()
+        total_epoch_loss = 0
+        train_loop = tqdm(train_loader, desc=f"Epoch {epoch}/{EPOCHS}", leave=False)
+        for (g1, g2, gp, y, c_graphs, c_indices) in train_loop:
+            optimizer.zero_grad()
+
+            preds_norm, log_vars, reactant_feats, product_feats, all_gates = model(g1, g2, gp, c_graphs, c_indices)
+            labels_norm = (y - mean_t) / std_t
+
+            loss_terms = criterion(preds_norm, labels_norm)
+            main_loss = ((1 - UNCERTAINTY_WEIGHT) * loss_terms + UNCERTAINTY_WEIGHT * (
+                    loss_terms * torch.exp(-log_vars) + log_vars)).mean()
+
+            positive_sim = cos_sim(reactant_feats, product_feats)
+            shuffled_product_feats = product_feats[torch.randperm(product_feats.size(0))]
+            negative_sim = cos_sim(reactant_feats, shuffled_product_feats)
+            contrastive_loss = -torch.log(
+                torch.exp(positive_sim) / (torch.exp(positive_sim) + torch.exp(negative_sim))).mean()
+
+            if all_gates:
+                all_gate_tensors = torch.cat(all_gates)
+                sparsity_loss = torch.mean(all_gate_tensors)
+            else:
+                sparsity_loss = torch.tensor(0.0, device=device)
+
+            total_loss = main_loss + CONTRASTIVE_LAMBDA * contrastive_loss + SPARSITY_ALPHA * sparsity_loss
+            total_loss.backward()
+            optimizer.step()
+
+            total_epoch_loss += total_loss.item() * y.size(0)
+            train_loop.set_postfix(loss=total_loss.item(), main=main_loss.item(),
+                                   cl=contrastive_loss.item(), sl=sparsity_loss.item())
+
+        avg_train_loss = total_epoch_loss / len(train_subset)
+        scheduler.step()
+        val_mae, val_rmse, val_r2 = run_evaluation_with_uncertainty(model, val_loader, device, mean_t, std_t)
+
+        if epoch % 10 == 0 or epoch == EPOCHS:
+            print(
+                f"\n--- Epoch {epoch}/{EPOCHS} Val --- MAE: {val_mae:.4f} | RMSE: {val_rmse:.4f} | R2: {val_r2:.4f} ---")
+        if not np.isnan(val_mae) and val_mae < best_val_mae:
+            best_val_mae = val_mae
+            torch.save(model.state_dict(), os.path.join(results_dir, 'best_model.pth'))
+        history.append(
+            {'epoch': epoch, 'train_loss': avg_train_loss, 'val_mae': val_mae, 'val_rmse': val_rmse, 'val_r2': val_r2})
+
+    pd.DataFrame(history).to_csv(os.path.join(results_dir, 'training_history.csv'), index=False)
+
+    best_epoch_stats = pd.DataFrame(history).sort_values(by='val_mae').iloc[0]
+    best_mae = best_epoch_stats['val_mae']
+    best_rmse = best_epoch_stats['val_rmse']
+    best_r2 = best_epoch_stats['val_r2']
+
+    print(f"Finished '{experiment_name}': Best Val MAE={best_mae:.4f}")
+    return {'mae': best_mae, 'rmse': best_rmse, 'r2': best_r2}
+
+
+if __name__ == "__main__":
+    CLEANED_CSV_PATH = 'data/suzuki_miyaura_smiles_with_fingerprint.csv'
+    GRAPHS_NPZ_PATH = 'data/preprocessed_graphs.npz'
+
+    SEEDS = [46, 124, 42]
+    all_results = []
+
+    for seed in SEEDS:
+        print(f"\n{'=' * 20} Running for seed: {seed} {'=' * 20}")
+        experiment_name = f"suzuki_miyaura_DualChannel_Contrastive_seed{seed}"
+        results = run_experiment(
+            CLEANED_CSV_PATH,
+            GRAPHS_NPZ_PATH,
+            val_ratio=0.3,  # 70/30 split
+            random_seed=seed,
+            experiment_name=experiment_name
+        )
+        all_results.append(results)
+
+    # --- Aggregate Results ---
+    results_df = pd.DataFrame(all_results)
+    mean_metrics = results_df.mean()
+    std_metrics = results_df.std()
+
+    print("AGGREGATED RESULTS ACROSS ALL SEEDS")
+    print("\n--- Raw Results per Seed ---")
+    print(results_df.to_string())
+    print("\n--- Aggregated Metrics (Mean ± Std Dev) ---")
+    print(f"R²:   {mean_metrics['r2']:.4f} ± {std_metrics['r2']:.4f}")
+    print(f"MAE:  {mean_metrics['mae']:.4f} ± {std_metrics['mae']:.4f}")
+    print(f"RMSE: {mean_metrics['rmse']:.4f} ± {std_metrics['rmse']:.4f}")
+    output_txt_path = 'training_results_summary.txt'
+
+    # Create the formatted strings to save
+    r2_str = f"R2: {mean_metrics['r2']:.2f} ± {std_metrics['r2']:.2f}"
+    mae_str = f"MAE: {mean_metrics['mae']:.2f} ± {std_metrics['mae']:.3f}"
+    rmse_str = f"RMSE: {mean_metrics['rmse']:.2f} ± {std_metrics['rmse']:.3f}"
+
+    try:
+        with open(output_txt_path, 'w', encoding='utf-8') as f:
+            f.write(f"{r2_str}\n")
+            f.write(f"{mae_str}\n")
+            f.write(f"{rmse_str}\n")
+
+        print(f"\nAggregated results summary saved to: {output_txt_path}")
+
+    except IOError as e:
+        print(f"\nError saving results to file: {e}")
+
+    print(f"{'=' * 50}\n")

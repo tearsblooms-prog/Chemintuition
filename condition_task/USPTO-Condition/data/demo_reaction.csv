@@ -1,0 +1,5 @@
+﻿reactant1_smiles,reactant2_smiles,product_smiles
+CS(=O)(=O)Cl,Cc1ccc(C(=O)NC2C3(C)CCC(C3)C2(C)C)cc1S(=O)(=O)N1CCNCC1,Cc1ccc(C(=O)NC2C3(C)CCC(C3)C2(C)C)cc1S(=O)(=O)N1CCN(S(C)(=O)=O)CC1
+CC1(C)OB(c2ccc(N)cc2)OC1(C)C,O=S(=O)(Cl)C1CC1,CC1(C)OB(c2ccc(NS(=O)(=O)C3CC3)cc2)OC1(C)C
+C=CCOCc1ccc([N+](=O)[O-])cc1NC(=N)N,CN(C)C=CC(=O)c1cccnc1,C=CCOCc1ccc([N+](=O)[O-])cc1Nc1nccc(-c2cccnc2)n1
+CC(C)(C)OC(=O)N1CCC(=O)CC1,N#CCBr,CC(C)(C)OC(=O)N1CCC(O)(CC#N)CC1
