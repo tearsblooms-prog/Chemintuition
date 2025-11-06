@@ -15,7 +15,7 @@ ID_CHEM_DICT_FILE = 'id_to_chemical.json'
 # Fingerprint structure constants
 FINGERPRINT_LENGTH = 640
 VALUES_PER_STEP = 32
-DEFAULT_TEMP = -1.0
+DEFAULT_TEMP = 25
 DEFAULT_DURATION = -1.0
 
 

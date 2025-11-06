@@ -57,9 +57,7 @@ class ReactionConditionTokenizer:
         return vocab
 
     def _discretize_temp(self, t):
-        if t == -999:
-            return 'TEMP_undefined'
-        elif 18 <= t <= 28:
+        if 18 <= t <= 28:
             return 'TEMP_rt'
         elif -20 <= t < 31:
             return f'TEMP_{math.floor(t)}'

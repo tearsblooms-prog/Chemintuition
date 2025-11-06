@@ -21,7 +21,7 @@ VALUES_PER_STEP = 1 + NUM_REAGENTS + NUM_CATALYSTS + NUM_SOLVENTS + \
                   NUM_OTHER_CONDITIONS
 FINGERPRINT_LENGTH = TOTAL_POTENTIAL_STEPS * VALUES_PER_STEP
 
-DEFAULT_TEMP = -1.0  # For unspecified temperatures
+DEFAULT_TEMP = 25.0  # For unspecified temperatures
 DEFAULT_DURATION = -1  # For unspecified durations or transitions
 RT_TEMP = 25.0
 
