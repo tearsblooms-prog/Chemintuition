@@ -23,7 +23,6 @@ from DualChannelMPNN import DualChannelMPNN
 # --- RDKit Import ---
 from rdkit import Chem
 
-
 # --- Atom Feature Configuration ---
 ONE_HOT_ATOMIC_NUM_SIZE = 35
 NUM_HYBRIDIZATION_TYPES = 6
@@ -154,6 +153,7 @@ def mol_to_atomic_graph(smiles: str) -> Data:
     except Exception:
         return empty_graph
 
+
 # --- Configuration ---
 CSV_FILE_PATH = 'data/Reaxys_total_syn_condition_fingerprint.csv'
 RESULTS_DIR = 'results'
@@ -189,6 +189,7 @@ print(f"Using device: {device}")
 tokenizer = ReactionConditionTokenizer()
 VOCAB_SIZE = len(tokenizer.vocab)
 print(f"Tokenizer initialized with vocab size: {VOCAB_SIZE}")
+
 
 class MultiMolReactionDataset(Dataset):
     def __init__(self, dataframe, tokenizer, max_len):
@@ -247,6 +248,7 @@ print(f"Train samples: {len(train_dataset)}")
 print(f"Validation samples: {len(val_dataset)}")
 print(f"Test samples: {len(test_dataset)}")
 
+
 def collate_fn(batch):
     r_graphs_1_b, r_graphs_2_b, p_graphs_b, tokens_b = zip(*batch)
 
@@ -292,6 +294,7 @@ optimizer = torch.optim.AdamW([
     {'params': mpnn_model.parameters(), 'lr': MPNN_LEARNING_RATE}
 ])
 criterion = nn.CrossEntropyLoss(ignore_index=tokenizer.pad_id)
+
 
 @torch.no_grad()
 def evaluate(model, mpnn_model, val_loader, criterion, device):
@@ -369,10 +372,12 @@ def run_test_and_generate_table(model, mpnn_model, test_loader, tokenizer, devic
         input_ids = tokens_batch[:, :-1]
         target_ids = tokens_batch[:, 1:]
         logits = model(input_ids, graph_contexts_batch)
+        probabilities = torch.softmax(logits, dim=-1)
         k_max = 15
 
         for i in range(tokens_batch.shape[0]):
-            sample_logits, sample_targets = logits[i], target_ids[i]
+            sample_logits, sample_targets, sample_probs = logits[i], target_ids[i], probabilities[i]
+
             try:
                 sep_indices = [j for j, tok in enumerate(input_ids[i].cpu().tolist()) if tok == tokenizer.sep_id]
                 step_starts = [0] + [idx + 1 for idx in sep_indices]
@@ -381,7 +386,6 @@ def run_test_and_generate_table(model, mpnn_model, test_loader, tokenizer, devic
             except (ValueError, IndexError):
                 continue
 
-            # --- Calculate the Top-k accuracy rates of c1, s1 and r1 ---
             for name, props in FEATURES_TO_EVALUATE.items():
                 token_abs_idx = step_start_logit_idx + props['token_rel_pos']
                 if token_abs_idx >= len(sample_targets): continue
@@ -400,9 +404,12 @@ def run_test_and_generate_table(model, mpnn_model, test_loader, tokenizer, devic
                 if target_token in topk_preds[:10]: results[name]['hits'][3] += 1
                 if target_token in topk_preds[:15]: results[name]['hits'][4] += 1
 
-            # --- Calculate the accuracy rate of Overall (c1s1r1) ---
             is_sample_valid_for_overall = True
-            all_conditions_correct = np.ones(num_metrics, dtype=bool)
+            all_conditions_correct = np.zeros(num_metrics, dtype=bool)
+
+            feature_top_k_info = []
+            true_combo_list = []
+
             for name, props in FEATURES_TO_EVALUATE.items():
                 token_abs_idx = step_start_logit_idx + props['token_rel_pos']
                 if token_abs_idx >= len(sample_targets):
@@ -414,21 +421,43 @@ def run_test_and_generate_table(model, mpnn_model, test_loader, tokenizer, devic
                     is_sample_valid_for_overall = False;
                     break
 
-                feature_logits = sample_logits[token_abs_idx]
-                _, topk_preds = torch.topk(feature_logits, k=k_max)
-                topk_preds = topk_preds.cpu().tolist()
+                feature_probs = sample_probs[token_abs_idx]
+                top_k_probs, top_k_indices = torch.topk(feature_probs, k=k_max)
 
-                if target_token not in topk_preds[:1]:  all_conditions_correct[0] = False
-                if target_token not in topk_preds[:3]:  all_conditions_correct[1] = False
-                if target_token not in topk_preds[:5]:  all_conditions_correct[2] = False
-                if target_token not in topk_preds[:10]: all_conditions_correct[3] = False
-                if target_token not in topk_preds[:15]: all_conditions_correct[4] = False
+                feature_top_k_info.append((top_k_probs, top_k_indices))
+                true_combo_list.append(target_token)
 
             if is_sample_valid_for_overall:
                 results['Overall (c1s1r1)']['count'] += 1
-                results['Overall (c1s1r1)']['hits'] += all_conditions_correct
 
-            # --- 计算温度 MAE ---
+                try:
+                    true_combo_tensor = torch.tensor(true_combo_list, device=device, dtype=torch.long)
+
+                    all_top_k_probs = [info[0] for info in feature_top_k_info]
+                    all_top_k_indices = [info[1] for info in feature_top_k_info]
+
+                    combo_probs_prod = torch.cartesian_prod(*all_top_k_probs).prod(dim=1)
+
+                    combo_indices = torch.cartesian_prod(*all_top_k_indices)
+
+                    _, top_15_indices_of_combos = torch.topk(combo_probs_prod, k=k_max)
+
+                    top_15_combos = combo_indices[top_15_indices_of_combos]
+
+                    matches = (top_15_combos == true_combo_tensor).all(dim=1)
+
+                    if matches[:1].any():  all_conditions_correct[0] = True
+                    if matches[:3].any():  all_conditions_correct[1] = True
+                    if matches[:5].any():  all_conditions_correct[2] = True
+                    if matches[:10].any(): all_conditions_correct[3] = True
+                    if matches.any():      all_conditions_correct[4] = True
+
+                    results['Overall (c1s1r1)']['hits'] += all_conditions_correct
+
+                except RuntimeError as e:
+                    print(f"Error during 'Overall' combination calculation (skipping sample): {e}")
+                    results['Overall (c1s1r1)']['count'] -= 1
+
             temp_token_abs_idx = step_start_logit_idx + TEMP_TOKEN_REL_POS
             if temp_token_abs_idx < len(sample_targets):
                 target_temp_token_id = sample_targets[temp_token_abs_idx].item()
@@ -469,11 +498,12 @@ def run_test_and_generate_table(model, mpnn_model, test_loader, tokenizer, devic
     print("-" * 80)
     print(df.to_markdown(index=False))
     print("-" * 80 + "\n")
-    table_path = os.path.join(RESULTS_DIR, 'performance_table_styled.md')
+    table_path = os.path.join(RESULTS_DIR, 'performance_table_final.md')
     with open(table_path, 'w') as f:
         f.write("# Chemical context condition performance\n\n")
         f.write(df.to_markdown(index=False))
     print(f"Performance table saved to {table_path}")
+
 
 if __name__ == '__main__':
     best_val_loss = float('inf')
@@ -512,7 +542,7 @@ if __name__ == '__main__':
 
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-            torch.nn.utils.clip_grad_norm_(mpnn_model.parameters(), 1.0)  # 对 MPNN 也进行梯度裁剪
+            torch.nn.utils.clip_grad_norm_(mpnn_model.parameters(), 1.0)
             optimizer.step()
             total_train_loss += loss.item()
             pbar.set_postfix(train_loss=loss.item())
@@ -532,7 +562,8 @@ if __name__ == '__main__':
             early_stopping_counter = 0
         else:
             early_stopping_counter += 1
-            print(f"Validation loss did not improve. Early stopping counter: {early_stopping_counter}/{EARLY_STOPPING_PATIENCE}")
+            print(
+                f"Validation loss did not improve. Early stopping counter: {early_stopping_counter}/{EARLY_STOPPING_PATIENCE}")
             if early_stopping_counter >= EARLY_STOPPING_PATIENCE:
                 print(f"--- Early stopping triggered after {epoch} epochs. ---")
                 break
@@ -540,7 +571,6 @@ if __name__ == '__main__':
         if epoch % 20 == 0 or epoch == EPOCHS:
             torch.save(model.state_dict(), os.path.join(RESULTS_DIR, f'model_epoch_{epoch}.pth'))
             torch.save(mpnn_model.state_dict(), os.path.join(RESULTS_DIR, f'mpnn_model_epoch_{epoch}.pth'))
-
 
     print("--- Training complete. ---")
     print(f"Best validation loss achieved: {best_val_loss:.4f}")
