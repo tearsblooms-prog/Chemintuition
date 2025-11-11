@@ -29,7 +29,7 @@ except ImportError:
 try:
     from model import AutoregressiveModel
     from data_utils import ReactionConditionTokenizer
-    from DualChannelMPNN import DualChannelMPNN
+    from ChemSReactMPNN import DualChannelMPNN
 except ImportError as e:
     print(f"Error: Required local files are missing.")
     print(f"ImportError: {e}")

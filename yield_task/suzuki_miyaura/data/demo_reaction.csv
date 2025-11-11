@@ -1,3 +1,3 @@
-﻿reactant1_smiles,reactant1_smiles,product_smiles,catalyst,reagent,solvent,y_val
+﻿reactant1_smiles,reactant2_smiles,product_smiles,catalyst,reagent,solvent,y_val
 C1=C(Cl)C=CC2=NC=CC=C12.CCC1=CC(=CC=C1)CC,CC1=CC=C2C(C=NN2C3OCCCC3)=C1B(O)O,C1=C(C2=C(C)C=CC3N(C4OCCCC4)N=CC2=3)C=CC2=NC=CC=C12,CC(=O)O~CC(=O)O~[Pd].P(c2ccccc2c1c(cc(cc1C(C)C)C(C)C)C(C)C)(C3CCCCC3)C4CCCCC4,[OH-].[Na+],CC#N.O,93.6745145376158
 C1=C(Cl)C=CC2=NC=CC=C12.CCC1=CC(=CC=C1)CC,CC1=CC=C2C(C=NN2C3OCCCC3)=C1B(O)O,C1=C(C2=C(C)C=CC3N(C4OCCCC4)N=CC2=3)C=CC2=NC=CC=C12,CC(=O)O~CC(=O)O~[Pd].C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.[Fe+2],[OH-].[Na+],CC#N.O,14.3214354734956

@@ -4,12 +4,12 @@ from torch_geometric.nn import Set2Set, SAGEConv
 from torch_geometric.data import Batch
 
 
-class DualChannelMPNN(nn.Module):
+class ChemSReactMPNN(nn.Module):
 
     def __init__(self, node_in_feats, edge_in_feats, hidden_feats=64,
                  num_step_message_passing=3, num_step_set2set=3, num_layer_set2set=1,
                  readout_feats=1024):
-        super(DualChannelMPNN, self).__init__()
+        super(ChemSReactMPNN, self).__init__()
         self.project_node_feats = nn.Sequential(
             nn.Linear(node_in_feats, hidden_feats), nn.ReLU()
         )
@@ -93,7 +93,7 @@ class YieldMPNN(nn.Module):
                  mpnn_readout_feats=1024,
                  predict_hidden_feats=512, prob_dropout=0.1):
         super(YieldMPNN, self).__init__()
-        self.mpnn = DualChannelMPNN(node_in_feats, edge_in_feats,
+        self.mpnn = ChemSReactMPNN(node_in_feats, edge_in_feats,
                          hidden_feats=mpnn_hidden_feats,
                          num_step_message_passing=mpnn_num_step_message_passing,
                          num_step_set2set=mpnn_num_step_set2set,

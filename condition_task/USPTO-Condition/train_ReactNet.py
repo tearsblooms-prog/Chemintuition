@@ -18,7 +18,7 @@ from torch_geometric.utils import scatter
 # --- Local Imports ---
 from data_utils import ReactionConditionTokenizer
 from model import AutoregressiveModel
-from DualChannelMPNN import DualChannelMPNN
+from ChemSReactMPNN import ChemSReactMPNN
 
 # --- RDKit Import ---
 from rdkit import Chem
@@ -178,7 +178,7 @@ EMBEDDING_DIM = 256
 TRANSFORMER_LAYERS = 6
 TRANSFORMER_HEADS = 8
 
-# --- DualChannelMPNN  ---
+# --- ChemSReactMPNN  ---
 MPNN_HIDDEN_FEATS = 128
 MPNN_NUM_STEP_MESSAGE_PASSING = 3
 MPNN_READOUT_FEATS = 512
@@ -274,8 +274,8 @@ train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, co
 val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 
-print("Initializing DualChannelMPNN (training from scratch)...")
-mpnn_model = DualChannelMPNN(
+print("Initializing ChemSReactMPNN")
+mpnn_model = ChemSReactMPNN(
     node_in_feats=ATOM_FEATURE_SIZE,
     edge_in_feats=EDGE_FEATURE_SIZE,
     hidden_feats=MPNN_HIDDEN_FEATS,
