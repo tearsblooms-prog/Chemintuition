@@ -1,0 +1,719 @@
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:86: UserWarning: An issue occurred while importing 'torch-scatter'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_scatter/_scatter_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-scatter'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:97: UserWarning: An issue occurred while importing 'torch-cluster'. Disabling its usage. Stacktrace: Detected that PyTorch and torch_cluster were compiled with different CUDA versions. PyTorch has CUDA version 12.1 and torch_cluster has CUDA version 11.8. Please reinstall the torch_cluster that matches your PyTorch install.
+  warnings.warn(f"An issue occurred while importing 'torch-cluster'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:113: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_spline_conv/_basis_cuda.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:124: UserWarning: An issue occurred while importing 'torch-sparse'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_sparse/_spmm_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-sparse'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/numpy/core/fromnumeric.py:57: FutureWarning: 'DataFrame.swapaxes' is deprecated and will be removed in a future version. Please use 'DataFrame.transpose' instead.
+  return bound(*args, **kwds)
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:86: UserWarning: An issue occurred while importing 'torch-scatter'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_scatter/_scatter_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-scatter'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:97: UserWarning: An issue occurred while importing 'torch-cluster'. Disabling its usage. Stacktrace: Detected that PyTorch and torch_cluster were compiled with different CUDA versions. PyTorch has CUDA version 12.1 and torch_cluster has CUDA version 11.8. Please reinstall the torch_cluster that matches your PyTorch install.
+  warnings.warn(f"An issue occurred while importing 'torch-cluster'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:113: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_spline_conv/_basis_cuda.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:124: UserWarning: An issue occurred while importing 'torch-sparse'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_sparse/_spmm_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-sparse'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:86: UserWarning: An issue occurred while importing 'torch-scatter'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_scatter/_scatter_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-scatter'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:97: UserWarning: An issue occurred while importing 'torch-cluster'. Disabling its usage. Stacktrace: Detected that PyTorch and torch_cluster were compiled with different CUDA versions. PyTorch has CUDA version 12.1 and torch_cluster has CUDA version 11.8. Please reinstall the torch_cluster that matches your PyTorch install.
+  warnings.warn(f"An issue occurred while importing 'torch-cluster'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:113: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_spline_conv/_basis_cuda.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:124: UserWarning: An issue occurred while importing 'torch-sparse'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_sparse/_spmm_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-sparse'. "
+/nfs/home/zhoujun/reaction_space/condition_predict/predict.py:238: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  mpnn_model.load_state_dict(torch.load(MPNN_MODEL_PATH, map_location=device))
+/nfs/home/zhoujun/reaction_space/condition_predict/predict.py:239: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+GPU 0 Prediction:   0%|          | 0/71657 [00:00<?, ?it/s]/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:86: UserWarning: An issue occurred while importing 'torch-scatter'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_scatter/_scatter_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-scatter'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:97: UserWarning: An issue occurred while importing 'torch-cluster'. Disabling its usage. Stacktrace: Detected that PyTorch and torch_cluster were compiled with different CUDA versions. PyTorch has CUDA version 12.1 and torch_cluster has CUDA version 11.8. Please reinstall the torch_cluster that matches your PyTorch install.
+  warnings.warn(f"An issue occurred while importing 'torch-cluster'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:113: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_spline_conv/_basis_cuda.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:124: UserWarning: An issue occurred while importing 'torch-sparse'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_sparse/_spmm_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-sparse'. "
+/nfs/home/zhoujun/reaction_space/condition_predict/predict.py:238: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  mpnn_model.load_state_dict(torch.load(MPNN_MODEL_PATH, map_location=device))
+/nfs/home/zhoujun/reaction_space/condition_predict/predict.py:239: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+
+GPU 1 Prediction:   0%|          | 0/71656 [00:00<?, ?it/s][A/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:86: UserWarning: An issue occurred while importing 'torch-scatter'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_scatter/_scatter_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-scatter'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:97: UserWarning: An issue occurred while importing 'torch-cluster'. Disabling its usage. Stacktrace: Detected that PyTorch and torch_cluster were compiled with different CUDA versions. PyTorch has CUDA version 12.1 and torch_cluster has CUDA version 11.8. Please reinstall the torch_cluster that matches your PyTorch install.
+  warnings.warn(f"An issue occurred while importing 'torch-cluster'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:113: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_spline_conv/_basis_cuda.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:124: UserWarning: An issue occurred while importing 'torch-sparse'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_sparse/_spmm_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-sparse'. "
+/nfs/home/zhoujun/reaction_space/condition_predict/predict.py:238: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  mpnn_model.load_state_dict(torch.load(MPNN_MODEL_PATH, map_location=device))
+/nfs/home/zhoujun/reaction_space/condition_predict/predict.py:239: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+
+
+GPU 2 Prediction:   0%|          | 0/71656 [00:00<?, ?it/s][A[A
+GPU 0 Prediction:   0%|          | 1/71657 [00:03<76:31:17,  3.84s/it]GPU 1 Prediction:   0%|          | 1/71656 [00:02<47:37:32,  2.39s/it][AGPU 0 Prediction:   0%|          | 2/71657 [00:03<32:57:21,  1.66s/it]
+GPU 1 Prediction:   0%|          | 2/71656 [00:02<21:04:49,  1.06s/it][A
+
+GPU 2 Prediction:   0%|          | 1/71656 [00:00<6:08:49,  3.24it/s][A[AGPU 0 Prediction:   0%|          | 3/71657 [00:04<19:00:17,  1.05it/s]
+GPU 1 Prediction:   0%|          | 3/71656 [00:02<12:33:54,  1.58it/s][A
+
+GPU 2 Prediction:   0%|          | 2/71656 [00:00<4:00:00,  4.98it/s][A[AGPU 0 Prediction:   0%|          | 4/71657 [00:04<12:27:20,  1.60it/s]
+GPU 1 Prediction:   0%|          | 4/71656 [00:02<8:34:20,  2.32it/s] [A
+
+GPU 2 Prediction:   0%|          | 3/71656 [00:00<3:17:13,  6.06it/s][A[AGPU 0 Prediction:   0%|          | 5/71657 [00:04<8:49:16,  2.26it/s] 
+GPU 1 Prediction:   0%|          | 5/71656 [00:02<6:21:15,  3.13it/s][A
+
+GPU 2 Prediction:   0%|          | 4/71656 [00:00<2:57:04,  6.74it/s][A[AGPU 0 Prediction:   0%|          | 6/71657 [00:04<6:40:05,  2.98it/s]
+GPU 1 Prediction:   0%|          | 6/71656 [00:03<5:03:13,  3.94it/s][A
+
+GPU 2 Prediction:   0%|          | 5/71656 [00:00<2:46:01,  7.19it/s][A[AGPU 0 Prediction:   0%|          | 7/71657 [00:04<5:17:28,  3.76it/s]
+GPU 1 Prediction:   0%|          | 7/71656 [00:03<4:13:27,  4.71it/s][A
+
+GPU 2 Prediction:   0%|          | 6/71656 [00:00<2:39:39,  7.48it/s][A[A/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:86: UserWarning: An issue occurred while importing 'torch-scatter'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_scatter/_scatter_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-scatter'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:97: UserWarning: An issue occurred while importing 'torch-cluster'. Disabling its usage. Stacktrace: Detected that PyTorch and torch_cluster were compiled with different CUDA versions. PyTorch has CUDA version 12.1 and torch_cluster has CUDA version 11.8. Please reinstall the torch_cluster that matches your PyTorch install.
+  warnings.warn(f"An issue occurred while importing 'torch-cluster'. "
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:113: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_spline_conv/_basis_cuda.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(
+/nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_geometric/typing.py:124: UserWarning: An issue occurred while importing 'torch-sparse'. Disabling its usage. Stacktrace: /nfs/home/zhoujun/miniconda3/envs/yieldnet/lib/python3.9/site-packages/torch_sparse/_spmm_cpu.so: undefined symbol: _ZN2at23SavedTensorDefaultHooks11set_tracingEb
+  warnings.warn(f"An issue occurred while importing 'torch-sparse'. "
+GPU 0 Prediction:   0%|          | 8/71657 [00:04<4:25:24,  4.50it/s]
+GPU 1 Prediction:   0%|          | 8/71656 [00:03<3:39:31,  5.44it/s][A
+
+GPU 2 Prediction:   0%|          | 7/71656 [00:01<2:35:12,  7.69it/s][A[AGPU 0 Prediction:   0%|          | 9/71657 [00:04<3:50:12,  5.19it/s]
+GPU 1 Prediction:   0%|          | 9/71656 [00:03<3:16:17,  6.08it/s][A
+
+GPU 2 Prediction:   0%|          | 8/71656 [00:01<2:32:28,  7.83it/s][A[A
+GPU 1 Prediction:   0%|          | 10/71656 [00:03<3:00:39,  6.61it/s][AGPU 0 Prediction:   0%|          | 10/71657 [00:04<3:26:04,  5.79it/s]
+
+GPU 2 Prediction:   0%|          | 9/71656 [00:01<2:31:02,  7.91it/s][A[A
+GPU 1 Prediction:   0%|          | 11/71656 [00:03<2:49:52,  7.03it/s][AGPU 0 Prediction:   0%|          | 11/71657 [00:05<3:09:49,  6.29it/s]
+
+GPU 2 Prediction:   0%|          | 10/71656 [00:01<2:29:25,  7.99it/s][A[A
+GPU 1 Prediction:   0%|          | 12/71656 [00:03<2:42:23,  7.35it/s][AGPU 0 Prediction:   0%|          | 12/71657 [00:05<2:58:31,  6.69it/s]
+
+GPU 2 Prediction:   0%|          | 11/71656 [00:01<2:28:21,  8.05it/s][A[A
+GPU 1 Prediction:   0%|          | 13/71656 [00:03<2:37:22,  7.59it/s][AGPU 0 Prediction:   0%|          | 13/71657 [00:05<2:51:01,  6.98it/s]
+
+GPU 2 Prediction:   0%|          | 12/71656 [00:01<2:27:39,  8.09it/s][A[A
+GPU 1 Prediction:   0%|          | 14/71656 [00:03<2:33:45,  7.77it/s][AGPU 0 Prediction:   0%|          | 14/71657 [00:05<2:45:39,  7.21it/s]
+
+GPU 2 Prediction:   0%|          | 13/71656 [00:01<2:27:13,  8.11it/s][A[A
+GPU 1 Prediction:   0%|          | 15/71656 [00:04<2:31:14,  7.89it/s][AGPU 0 Prediction:   0%|          | 15/71657 [00:05<2:41:41,  7.38it/s]
+
+GPU 2 Prediction:   0%|          | 14/71656 [00:01<2:26:55,  8.13it/s][A[A
+GPU 1 Prediction:   0%|          | 16/71656 [00:04<2:30:33,  7.93it/s][A
+
+GPU 2 Prediction:   0%|          | 15/71656 [00:02<2:27:42,  8.08it/s][A[AGPU 0 Prediction:   0%|          | 16/71657 [00:05<2:39:53,  7.47it/s]
+GPU 1 Prediction:   0%|          | 17/71656 [00:04<2:28:38,  8.03it/s][A
+
+GPU 2 Prediction:   0%|          | 16/71656 [00:02<2:26:46,  8.13it/s][A[AGPU 0 Prediction:   0%|          | 17/71657 [00:05<2:37:31,  7.58it/s]/nfs/home/zhoujun/reaction_space/condition_predict/predict.py:238: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  mpnn_model.load_state_dict(torch.load(MPNN_MODEL_PATH, map_location=device))
+/nfs/home/zhoujun/reaction_space/condition_predict/predict.py:239: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+
+
+
+GPU 3 Prediction:   0%|          | 0/71656 [00:00<?, ?it/s][A[A[A
+GPU 1 Prediction:   0%|          | 18/71656 [00:04<2:27:23,  8.10it/s][A
+
+GPU 2 Prediction:   0%|          | 17/71656 [00:02<2:26:18,  8.16it/s][A[AGPU 0 Prediction:   0%|          | 18/71657 [00:05<2:35:33,  7.68it/s]
+GPU 1 Prediction:   0%|          | 19/71656 [00:04<2:26:16,  8.16it/s][A
+
+GPU 2 Prediction:   0%|          | 18/71656 [00:02<2:25:52,  8.19it/s][A[AGPU 0 Prediction:   0%|          | 19/71657 [00:06<2:34:30,  7.73it/s]
+GPU 1 Prediction:   0%|          | 20/71656 [00:04<2:25:50,  8.19it/s][A
+
+
+GPU 3 Prediction:   0%|          | 1/71656 [00:00<5:55:55,  3.36it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 19/71656 [00:02<2:26:02,  8.18it/s][A[AGPU 0 Prediction:   0%|          | 20/71657 [00:06<2:33:33,  7.78it/s]
+GPU 1 Prediction:   0%|          | 21/71656 [00:04<2:25:10,  8.22it/s][A
+
+
+GPU 3 Prediction:   0%|          | 2/71656 [00:00<3:51:26,  5.16it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 20/71656 [00:02<2:25:39,  8.20it/s][A[AGPU 0 Prediction:   0%|          | 21/71657 [00:06<2:32:31,  7.83it/s]
+GPU 1 Prediction:   0%|          | 22/71656 [00:04<2:24:40,  8.25it/s][A
+
+
+GPU 3 Prediction:   0%|          | 3/71656 [00:00<3:11:13,  6.25it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 21/71656 [00:02<2:25:48,  8.19it/s][A[AGPU 0 Prediction:   0%|          | 22/71657 [00:06<2:31:51,  7.86it/s]
+GPU 1 Prediction:   0%|          | 23/71656 [00:05<2:24:39,  8.25it/s][A
+
+
+GPU 3 Prediction:   0%|          | 4/71656 [00:00<2:52:07,  6.94it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 22/71656 [00:02<2:25:31,  8.20it/s][A[AGPU 0 Prediction:   0%|          | 23/71657 [00:06<2:31:14,  7.89it/s]
+GPU 1 Prediction:   0%|          | 24/71656 [00:05<2:24:20,  8.27it/s][A
+
+
+GPU 3 Prediction:   0%|          | 5/71656 [00:00<2:41:49,  7.38it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 23/71656 [00:03<2:25:44,  8.19it/s][A[AGPU 0 Prediction:   0%|          | 24/71657 [00:06<2:31:42,  7.87it/s]
+GPU 1 Prediction:   0%|          | 25/71656 [00:05<2:24:19,  8.27it/s][A
+
+
+GPU 3 Prediction:   0%|          | 6/71656 [00:00<2:35:29,  7.68it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 24/71656 [00:03<2:25:27,  8.21it/s][A[AGPU 0 Prediction:   0%|          | 25/71657 [00:06<2:31:59,  7.85it/s]
+GPU 1 Prediction:   0%|          | 26/71656 [00:05<2:24:07,  8.28it/s][A
+
+
+GPU 3 Prediction:   0%|          | 7/71656 [00:01<2:31:21,  7.89it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 25/71656 [00:03<2:26:33,  8.15it/s][A[AGPU 0 Prediction:   0%|          | 26/71657 [00:07<2:32:42,  7.82it/s]
+GPU 1 Prediction:   0%|          | 27/71656 [00:05<2:24:33,  8.26it/s][A
+
+
+GPU 3 Prediction:   0%|          | 8/71656 [00:01<2:29:51,  7.97it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 26/71656 [00:03<2:27:29,  8.09it/s][A[AGPU 0 Prediction:   0%|          | 27/71657 [00:07<2:33:00,  7.80it/s]
+GPU 1 Prediction:   0%|          | 28/71656 [00:05<2:24:45,  8.25it/s][A
+
+
+GPU 3 Prediction:   0%|          | 9/71656 [00:01<2:27:36,  8.09it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 27/71656 [00:03<2:26:53,  8.13it/s][A[AGPU 0 Prediction:   0%|          | 28/71657 [00:07<2:33:04,  7.80it/s]
+GPU 1 Prediction:   0%|          | 29/71656 [00:05<2:25:15,  8.22it/s][A
+
+
+GPU 3 Prediction:   0%|          | 10/71656 [00:01<2:26:11,  8.17it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 28/71656 [00:03<2:26:30,  8.15it/s][A[A
+GPU 1 Prediction:   0%|          | 30/71656 [00:05<2:25:22,  8.21it/s][AGPU 0 Prediction:   0%|          | 29/71657 [00:07<2:33:19,  7.79it/s]
+
+
+GPU 3 Prediction:   0%|          | 11/71656 [00:01<2:25:11,  8.22it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 29/71656 [00:03<2:26:13,  8.16it/s][A[A
+GPU 1 Prediction:   0%|          | 31/71656 [00:06<2:25:47,  8.19it/s][AGPU 0 Prediction:   0%|          | 30/71657 [00:07<2:32:40,  7.82it/s]
+
+
+GPU 3 Prediction:   0%|          | 12/71656 [00:01<2:24:34,  8.26it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 30/71656 [00:03<2:26:10,  8.17it/s][A[A
+GPU 1 Prediction:   0%|          | 32/71656 [00:06<2:25:46,  8.19it/s][AGPU 0 Prediction:   0%|          | 31/71657 [00:07<2:32:35,  7.82it/s]
+
+
+GPU 3 Prediction:   0%|          | 13/71656 [00:01<2:24:11,  8.28it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 31/71656 [00:03<2:26:00,  8.18it/s][A[A
+GPU 1 Prediction:   0%|          | 33/71656 [00:06<2:25:29,  8.21it/s][A
+
+
+GPU 3 Prediction:   0%|          | 14/71656 [00:01<2:23:49,  8.30it/s][A[A[AGPU 0 Prediction:   0%|          | 32/71657 [00:07<2:32:13,  7.84it/s]
+
+GPU 2 Prediction:   0%|          | 32/71656 [00:04<2:26:16,  8.16it/s][A[A
+GPU 1 Prediction:   0%|          | 34/71656 [00:06<2:25:37,  8.20it/s][A
+
+
+GPU 3 Prediction:   0%|          | 15/71656 [00:01<2:23:41,  8.31it/s][A[A[AGPU 0 Prediction:   0%|          | 33/71657 [00:07<2:32:16,  7.84it/s]
+
+GPU 2 Prediction:   0%|          | 33/71656 [00:04<2:26:09,  8.17it/s][A[A
+GPU 1 Prediction:   0%|          | 35/71656 [00:06<2:25:30,  8.20it/s][A
+
+
+GPU 3 Prediction:   0%|          | 16/71656 [00:02<2:23:32,  8.32it/s][A[A[AGPU 0 Prediction:   0%|          | 34/71657 [00:08<2:31:55,  7.86it/s]
+
+GPU 2 Prediction:   0%|          | 34/71656 [00:04<2:27:02,  8.12it/s][A[A
+GPU 1 Prediction:   0%|          | 36/71656 [00:06<2:25:20,  8.21it/s][A
+
+
+GPU 3 Prediction:   0%|          | 17/71656 [00:02<2:23:33,  8.32it/s][A[A[AGPU 0 Prediction:   0%|          | 35/71657 [00:08<2:31:37,  7.87it/s]
+
+GPU 2 Prediction:   0%|          | 35/71656 [00:04<2:26:52,  8.13it/s][A[A
+GPU 1 Prediction:   0%|          | 37/71656 [00:06<2:25:46,  8.19it/s][A
+
+
+GPU 3 Prediction:   0%|          | 18/71656 [00:02<2:23:31,  8.32it/s][A[A[AGPU 0 Prediction:   0%|          | 36/71657 [00:08<2:31:41,  7.87it/s]
+
+GPU 2 Prediction:   0%|          | 36/71656 [00:04<2:27:05,  8.12it/s][A[A
+GPU 1 Prediction:   0%|          | 38/71656 [00:06<2:25:39,  8.19it/s][A
+
+
+GPU 3 Prediction:   0%|          | 19/71656 [00:02<2:23:18,  8.33it/s][A[A[AGPU 0 Prediction:   0%|          | 37/71657 [00:08<2:31:43,  7.87it/s]
+
+GPU 2 Prediction:   0%|          | 37/71656 [00:04<2:26:40,  8.14it/s][A[A
+GPU 1 Prediction:   0%|          | 39/71656 [00:07<2:25:41,  8.19it/s][A
+
+
+GPU 3 Prediction:   0%|          | 20/71656 [00:02<2:23:07,  8.34it/s][A[A[AGPU 0 Prediction:   0%|          | 38/71657 [00:08<2:31:31,  7.88it/s]
+
+GPU 2 Prediction:   0%|          | 38/71656 [00:04<2:26:24,  8.15it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 21/71656 [00:02<2:23:00,  8.35it/s][A[A[A
+GPU 1 Prediction:   0%|          | 40/71656 [00:07<2:25:37,  8.20it/s][AGPU 0 Prediction:   0%|          | 39/71657 [00:08<2:31:30,  7.88it/s]
+
+GPU 2 Prediction:   0%|          | 39/71656 [00:04<2:26:08,  8.17it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 22/71656 [00:02<2:22:54,  8.35it/s][A[A[A
+GPU 1 Prediction:   0%|          | 41/71656 [00:07<2:25:30,  8.20it/s][AGPU 0 Prediction:   0%|          | 40/71657 [00:08<2:31:32,  7.88it/s]
+
+GPU 2 Prediction:   0%|          | 40/71656 [00:05<2:26:04,  8.17it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 23/71656 [00:02<2:22:56,  8.35it/s][A[A[A
+GPU 1 Prediction:   0%|          | 42/71656 [00:07<2:25:10,  8.22it/s][A
+
+GPU 2 Prediction:   0%|          | 41/71656 [00:05<2:25:57,  8.18it/s][A[AGPU 0 Prediction:   0%|          | 41/71657 [00:08<2:31:17,  7.89it/s]
+
+
+GPU 3 Prediction:   0%|          | 24/71656 [00:03<2:22:50,  8.36it/s][A[A[A
+GPU 1 Prediction:   0%|          | 43/71656 [00:07<2:25:17,  8.21it/s][A
+
+GPU 2 Prediction:   0%|          | 42/71656 [00:05<2:25:47,  8.19it/s][A[AGPU 0 Prediction:   0%|          | 42/71657 [00:09<2:31:20,  7.89it/s]
+
+
+GPU 3 Prediction:   0%|          | 25/71656 [00:03<2:23:31,  8.32it/s][A[A[A
+GPU 1 Prediction:   0%|          | 44/71656 [00:07<2:25:19,  8.21it/s][A
+
+GPU 2 Prediction:   0%|          | 43/71656 [00:05<2:25:45,  8.19it/s][A[AGPU 0 Prediction:   0%|          | 43/71657 [00:09<2:31:35,  7.87it/s]
+
+
+GPU 3 Prediction:   0%|          | 26/71656 [00:03<2:23:27,  8.32it/s][A[A[A
+GPU 1 Prediction:   0%|          | 45/71656 [00:07<2:25:15,  8.22it/s][A
+
+GPU 2 Prediction:   0%|          | 44/71656 [00:05<2:26:00,  8.17it/s][A[AGPU 0 Prediction:   0%|          | 44/71657 [00:09<2:31:33,  7.88it/s]
+
+
+GPU 3 Prediction:   0%|          | 27/71656 [00:03<2:23:19,  8.33it/s][A[A[A
+GPU 1 Prediction:   0%|          | 46/71656 [00:07<2:25:30,  8.20it/s][A
+
+GPU 2 Prediction:   0%|          | 45/71656 [00:05<2:26:05,  8.17it/s][A[AGPU 0 Prediction:   0%|          | 45/71657 [00:09<2:31:24,  7.88it/s]
+
+
+GPU 3 Prediction:   0%|          | 28/71656 [00:03<2:23:06,  8.34it/s][A[A[A
+GPU 1 Prediction:   0%|          | 47/71656 [00:08<2:25:31,  8.20it/s][A
+
+GPU 2 Prediction:   0%|          | 46/71656 [00:05<2:26:00,  8.17it/s][A[AGPU 0 Prediction:   0%|          | 46/71657 [00:09<2:31:35,  7.87it/s]
+
+
+GPU 3 Prediction:   0%|          | 29/71656 [00:03<2:23:04,  8.34it/s][A[A[A
+GPU 1 Prediction:   0%|          | 48/71656 [00:08<2:25:14,  8.22it/s][A
+
+GPU 2 Prediction:   0%|          | 47/71656 [00:05<2:25:56,  8.18it/s][A[AGPU 0 Prediction:   0%|          | 47/71657 [00:09<2:31:42,  7.87it/s]
+
+
+GPU 3 Prediction:   0%|          | 30/71656 [00:03<2:23:02,  8.35it/s][A[A[A
+GPU 1 Prediction:   0%|          | 49/71656 [00:08<2:25:11,  8.22it/s][A
+
+GPU 2 Prediction:   0%|          | 48/71656 [00:06<2:25:56,  8.18it/s][A[AGPU 0 Prediction:   0%|          | 48/71657 [00:09<2:31:38,  7.87it/s]
+
+
+GPU 3 Prediction:   0%|          | 31/71656 [00:03<2:23:06,  8.34it/s][A[A[A
+GPU 1 Prediction:   0%|          | 50/71656 [00:08<2:25:23,  8.21it/s][A
+
+GPU 2 Prediction:   0%|          | 49/71656 [00:06<2:26:03,  8.17it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 32/71656 [00:04<2:23:02,  8.35it/s][A[A[AGPU 0 Prediction:   0%|          | 49/71657 [00:09<2:31:22,  7.88it/s]
+GPU 1 Prediction:   0%|          | 51/71656 [00:08<2:25:17,  8.21it/s][A
+
+GPU 2 Prediction:   0%|          | 50/71656 [00:06<2:25:58,  8.18it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 33/71656 [00:04<2:23:07,  8.34it/s][A[A[AGPU 0 Prediction:   0%|          | 50/71657 [00:10<2:31:18,  7.89it/s]
+GPU 1 Prediction:   0%|          | 52/71656 [00:08<2:25:08,  8.22it/s][A
+
+GPU 2 Prediction:   0%|          | 51/71656 [00:06<2:25:55,  8.18it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 34/71656 [00:04<2:24:12,  8.28it/s][A[A[AGPU 0 Prediction:   0%|          | 51/71657 [00:10<2:30:54,  7.91it/s]
+GPU 1 Prediction:   0%|          | 53/71656 [00:08<2:25:04,  8.23it/s][A
+
+GPU 2 Prediction:   0%|          | 52/71656 [00:06<2:26:16,  8.16it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 35/71656 [00:04<2:24:04,  8.29it/s][A[A[AGPU 0 Prediction:   0%|          | 52/71657 [00:10<2:30:27,  7.93it/s]
+GPU 1 Prediction:   0%|          | 54/71656 [00:08<2:25:36,  8.20it/s][A
+
+GPU 2 Prediction:   0%|          | 53/71656 [00:06<2:26:03,  8.17it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 36/71656 [00:04<2:23:42,  8.31it/s][A[A[AGPU 0 Prediction:   0%|          | 53/71657 [00:10<2:30:15,  7.94it/s]
+GPU 1 Prediction:   0%|          | 55/71656 [00:08<2:25:25,  8.21it/s][A
+
+GPU 2 Prediction:   0%|          | 54/71656 [00:06<2:26:00,  8.17it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 37/71656 [00:04<2:23:26,  8.32it/s][A[A[A
+GPU 1 Prediction:   0%|          | 56/71656 [00:09<2:25:14,  8.22it/s][AGPU 0 Prediction:   0%|          | 54/71657 [00:10<2:30:09,  7.95it/s]
+
+GPU 2 Prediction:   0%|          | 55/71656 [00:06<2:26:23,  8.15it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 38/71656 [00:04<2:23:14,  8.33it/s][A[A[A
+GPU 1 Prediction:   0%|          | 57/71656 [00:09<2:25:10,  8.22it/s][AGPU 0 Prediction:   0%|          | 55/71657 [00:10<2:30:06,  7.95it/s]
+
+GPU 2 Prediction:   0%|          | 56/71656 [00:07<2:26:15,  8.16it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 39/71656 [00:04<2:23:07,  8.34it/s][A[A[A
+GPU 1 Prediction:   0%|          | 58/71656 [00:09<2:25:32,  8.20it/s][AGPU 0 Prediction:   0%|          | 56/71657 [00:10<2:30:03,  7.95it/s]
+
+GPU 2 Prediction:   0%|          | 57/71656 [00:07<2:26:13,  8.16it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 40/71656 [00:04<2:23:00,  8.35it/s][A[A[A
+GPU 1 Prediction:   0%|          | 59/71656 [00:09<2:25:22,  8.21it/s][AGPU 0 Prediction:   0%|          | 57/71657 [00:10<2:30:00,  7.95it/s]
+
+GPU 2 Prediction:   0%|          | 58/71656 [00:07<2:26:10,  8.16it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 41/71656 [00:05<2:22:56,  8.35it/s][A[A[A
+GPU 1 Prediction:   0%|          | 60/71656 [00:09<2:25:08,  8.22it/s][AGPU 0 Prediction:   0%|          | 58/71657 [00:11<2:29:55,  7.96it/s]
+
+GPU 2 Prediction:   0%|          | 59/71656 [00:07<2:25:58,  8.17it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 42/71656 [00:05<2:22:54,  8.35it/s][A[A[A
+GPU 1 Prediction:   0%|          | 61/71656 [00:09<2:24:58,  8.23it/s][AGPU 0 Prediction:   0%|          | 59/71657 [00:11<2:30:00,  7.95it/s]
+
+GPU 2 Prediction:   0%|          | 60/71656 [00:07<2:25:49,  8.18it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 43/71656 [00:05<2:22:50,  8.36it/s][A[A[A
+GPU 1 Prediction:   0%|          | 62/71656 [00:09<2:24:50,  8.24it/s][AGPU 0 Prediction:   0%|          | 60/71657 [00:11<2:29:51,  7.96it/s]
+
+GPU 2 Prediction:   0%|          | 61/71656 [00:07<2:25:20,  8.21it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 44/71656 [00:05<2:22:53,  8.35it/s][A[A[A
+GPU 1 Prediction:   0%|          | 63/71656 [00:09<2:25:13,  8.22it/s][AGPU 0 Prediction:   0%|          | 61/71657 [00:11<2:29:48,  7.96it/s]
+
+GPU 2 Prediction:   0%|          | 62/71656 [00:07<2:25:05,  8.22it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 45/71656 [00:05<2:23:09,  8.34it/s][A[A[A
+GPU 1 Prediction:   0%|          | 64/71656 [00:10<2:25:24,  8.21it/s][AGPU 0 Prediction:   0%|          | 62/71657 [00:11<2:29:42,  7.97it/s]
+
+GPU 2 Prediction:   0%|          | 63/71656 [00:07<2:24:59,  8.23it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 46/71656 [00:05<2:23:12,  8.33it/s][A[A[A
+GPU 1 Prediction:   0%|          | 65/71656 [00:10<2:25:14,  8.22it/s][AGPU 0 Prediction:   0%|          | 63/71657 [00:11<2:29:36,  7.98it/s]
+
+GPU 2 Prediction:   0%|          | 64/71656 [00:08<2:24:57,  8.23it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 47/71656 [00:05<2:23:19,  8.33it/s][A[A[A
+GPU 1 Prediction:   0%|          | 66/71656 [00:10<2:25:14,  8.22it/s][AGPU 0 Prediction:   0%|          | 64/71657 [00:11<2:29:37,  7.97it/s]
+
+GPU 2 Prediction:   0%|          | 65/71656 [00:08<2:24:47,  8.24it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 48/71656 [00:05<2:23:18,  8.33it/s][A[A[A
+GPU 1 Prediction:   0%|          | 67/71656 [00:10<2:25:19,  8.21it/s][AGPU 0 Prediction:   0%|          | 65/71657 [00:11<2:31:11,  7.89it/s]
+
+GPU 2 Prediction:   0%|          | 66/71656 [00:08<2:26:11,  8.16it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 49/71656 [00:06<2:24:50,  8.24it/s][A[A[A
+GPU 1 Prediction:   0%|          | 68/71656 [00:10<2:26:05,  8.17it/s][AGPU 0 Prediction:   0%|          | 66/71657 [00:12<2:30:43,  7.92it/s]
+
+
+GPU 3 Prediction:   0%|          | 50/71656 [00:06<2:24:26,  8.26it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 67/71656 [00:08<2:26:01,  8.17it/s][A[A
+GPU 1 Prediction:   0%|          | 69/71656 [00:10<2:25:50,  8.18it/s][AGPU 0 Prediction:   0%|          | 67/71657 [00:12<2:30:33,  7.92it/s]
+
+
+GPU 3 Prediction:   0%|          | 51/71656 [00:06<2:24:07,  8.28it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 68/71656 [00:08<2:25:32,  8.20it/s][A[A
+GPU 1 Prediction:   0%|          | 70/71656 [00:10<2:25:34,  8.20it/s][AGPU 0 Prediction:   0%|          | 68/71657 [00:12<2:30:42,  7.92it/s]
+
+
+GPU 3 Prediction:   0%|          | 52/71656 [00:06<2:23:32,  8.31it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 69/71656 [00:08<2:25:47,  8.18it/s][A[A
+GPU 1 Prediction:   0%|          | 71/71656 [00:10<2:25:39,  8.19it/s][AGPU 0 Prediction:   0%|          | 69/71657 [00:12<2:30:15,  7.94it/s]
+
+
+GPU 3 Prediction:   0%|          | 53/71656 [00:06<2:23:04,  8.34it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 70/71656 [00:08<2:25:07,  8.22it/s][A[A
+GPU 1 Prediction:   0%|          | 72/71656 [00:11<2:24:52,  8.24it/s][A
+
+
+GPU 3 Prediction:   0%|          | 54/71656 [00:06<2:22:43,  8.36it/s][A[A[AGPU 0 Prediction:   0%|          | 70/71657 [00:12<2:30:04,  7.95it/s]
+
+GPU 2 Prediction:   0%|          | 71/71656 [00:08<2:24:21,  8.27it/s][A[A
+GPU 1 Prediction:   0%|          | 73/71656 [00:11<2:24:16,  8.27it/s][A
+
+
+GPU 3 Prediction:   0%|          | 55/71656 [00:06<2:22:17,  8.39it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 72/71656 [00:08<2:24:02,  8.28it/s][A[AGPU 0 Prediction:   0%|          | 71/71657 [00:12<2:30:00,  7.95it/s]
+GPU 1 Prediction:   0%|          | 74/71656 [00:11<2:23:53,  8.29it/s][A
+
+
+GPU 3 Prediction:   0%|          | 56/71656 [00:06<2:22:46,  8.36it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 73/71656 [00:09<2:23:59,  8.29it/s][A[AGPU 0 Prediction:   0%|          | 72/71657 [00:12<2:30:18,  7.94it/s]
+GPU 1 Prediction:   0%|          | 75/71656 [00:11<2:24:19,  8.27it/s][A
+
+
+GPU 3 Prediction:   0%|          | 57/71656 [00:07<2:22:43,  8.36it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 74/71656 [00:09<2:23:51,  8.29it/s][A[AGPU 0 Prediction:   0%|          | 73/71657 [00:12<2:30:32,  7.93it/s]
+GPU 1 Prediction:   0%|          | 76/71656 [00:11<2:23:54,  8.29it/s][A
+
+
+GPU 3 Prediction:   0%|          | 58/71656 [00:07<2:22:40,  8.36it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 75/71656 [00:09<2:23:39,  8.30it/s][A[AGPU 0 Prediction:   0%|          | 74/71657 [00:13<2:30:26,  7.93it/s]
+GPU 1 Prediction:   0%|          | 77/71656 [00:11<2:23:53,  8.29it/s][A
+
+
+GPU 3 Prediction:   0%|          | 59/71656 [00:07<2:22:22,  8.38it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 76/71656 [00:09<2:23:42,  8.30it/s][A[AGPU 0 Prediction:   0%|          | 75/71657 [00:13<2:30:18,  7.94it/s]
+GPU 1 Prediction:   0%|          | 78/71656 [00:11<2:23:42,  8.30it/s][A
+
+
+GPU 3 Prediction:   0%|          | 60/71656 [00:07<2:22:08,  8.40it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 77/71656 [00:09<2:23:30,  8.31it/s][A[AGPU 0 Prediction:   0%|          | 76/71657 [00:13<2:30:47,  7.91it/s]
+GPU 1 Prediction:   0%|          | 79/71656 [00:11<2:23:35,  8.31it/s][A
+
+
+GPU 3 Prediction:   0%|          | 61/71656 [00:07<2:22:07,  8.40it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 78/71656 [00:09<2:23:33,  8.31it/s][A[AGPU 0 Prediction:   0%|          | 77/71657 [00:13<2:30:56,  7.90it/s]
+GPU 1 Prediction:   0%|          | 80/71656 [00:12<2:23:45,  8.30it/s][A
+
+
+GPU 3 Prediction:   0%|          | 62/71656 [00:07<2:22:18,  8.38it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 79/71656 [00:09<2:23:54,  8.29it/s][A[AGPU 0 Prediction:   0%|          | 78/71657 [00:13<2:31:02,  7.90it/s]
+GPU 1 Prediction:   0%|          | 81/71656 [00:12<2:23:40,  8.30it/s][A
+
+
+GPU 3 Prediction:   0%|          | 63/71656 [00:07<2:22:16,  8.39it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 80/71656 [00:09<2:24:02,  8.28it/s][A[A
+GPU 1 Prediction:   0%|          | 82/71656 [00:12<2:23:39,  8.30it/s][AGPU 0 Prediction:   0%|          | 79/71657 [00:13<2:30:55,  7.90it/s]
+
+
+GPU 3 Prediction:   0%|          | 64/71656 [00:07<2:22:14,  8.39it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 81/71656 [00:10<2:24:13,  8.27it/s][A[A
+GPU 1 Prediction:   0%|          | 83/71656 [00:12<2:23:35,  8.31it/s][AGPU 0 Prediction:   0%|          | 80/71657 [00:13<2:30:56,  7.90it/s]
+
+
+GPU 3 Prediction:   0%|          | 65/71656 [00:07<2:22:23,  8.38it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 82/71656 [00:10<2:24:05,  8.28it/s][A[A
+GPU 1 Prediction:   0%|          | 84/71656 [00:12<2:24:01,  8.28it/s][AGPU 0 Prediction:   0%|          | 81/71657 [00:13<2:30:55,  7.90it/s]
+
+
+GPU 3 Prediction:   0%|          | 66/71656 [00:08<2:22:52,  8.35it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 83/71656 [00:10<2:23:54,  8.29it/s][A[A
+GPU 1 Prediction:   0%|          | 85/71656 [00:12<2:24:22,  8.26it/s][AGPU 0 Prediction:   0%|          | 82/71657 [00:14<2:30:59,  7.90it/s]
+
+
+GPU 3 Prediction:   0%|          | 67/71656 [00:08<2:22:43,  8.36it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 84/71656 [00:10<2:23:47,  8.30it/s][A[A
+GPU 1 Prediction:   0%|          | 86/71656 [00:12<2:24:21,  8.26it/s][AGPU 0 Prediction:   0%|          | 83/71657 [00:14<2:31:03,  7.90it/s]
+
+
+GPU 3 Prediction:   0%|          | 68/71656 [00:08<2:22:33,  8.37it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 85/71656 [00:10<2:23:36,  8.31it/s][A[A
+GPU 1 Prediction:   0%|          | 87/71656 [00:12<2:24:27,  8.26it/s][AGPU 0 Prediction:   0%|          | 84/71657 [00:14<2:31:16,  7.89it/s]
+
+
+GPU 3 Prediction:   0%|          | 69/71656 [00:08<2:22:35,  8.37it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 86/71656 [00:10<2:23:42,  8.30it/s][A[A
+GPU 1 Prediction:   0%|          | 88/71656 [00:12<2:24:29,  8.26it/s][AGPU 0 Prediction:   0%|          | 85/71657 [00:14<2:31:08,  7.89it/s]
+
+
+GPU 3 Prediction:   0%|          | 70/71656 [00:08<2:22:26,  8.38it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 87/71656 [00:10<2:23:31,  8.31it/s][A[A
+GPU 1 Prediction:   0%|          | 89/71656 [00:13<2:24:53,  8.23it/s][AGPU 0 Prediction:   0%|          | 86/71657 [00:14<2:31:17,  7.88it/s]
+
+
+GPU 3 Prediction:   0%|          | 71/71656 [00:08<2:22:25,  8.38it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 88/71656 [00:10<2:23:28,  8.31it/s][A[A
+GPU 1 Prediction:   0%|          | 90/71656 [00:13<2:24:56,  8.23it/s][A
+
+
+GPU 3 Prediction:   0%|          | 72/71656 [00:08<2:22:25,  8.38it/s][A[A[AGPU 0 Prediction:   0%|          | 87/71657 [00:14<2:31:05,  7.90it/s]
+
+GPU 2 Prediction:   0%|          | 89/71656 [00:11<2:23:26,  8.32it/s][A[A
+GPU 1 Prediction:   0%|          | 91/71656 [00:13<2:24:42,  8.24it/s][A
+
+
+GPU 3 Prediction:   0%|          | 73/71656 [00:08<2:22:28,  8.37it/s][A[A[AGPU 0 Prediction:   0%|          | 88/71657 [00:14<2:31:09,  7.89it/s]
+
+GPU 2 Prediction:   0%|          | 90/71656 [00:11<2:23:48,  8.29it/s][A[A
+GPU 1 Prediction:   0%|          | 92/71656 [00:13<2:25:07,  8.22it/s][A
+
+
+GPU 3 Prediction:   0%|          | 74/71656 [00:09<2:22:32,  8.37it/s][A[A[AGPU 0 Prediction:   0%|          | 89/71657 [00:14<2:31:06,  7.89it/s]
+
+GPU 2 Prediction:   0%|          | 91/71656 [00:11<2:23:45,  8.30it/s][A[A
+GPU 1 Prediction:   0%|          | 93/71656 [00:13<2:24:58,  8.23it/s][A
+
+
+GPU 3 Prediction:   0%|          | 75/71656 [00:09<2:22:29,  8.37it/s][A[A[AGPU 0 Prediction:   0%|          | 90/71657 [00:15<2:30:54,  7.90it/s]
+
+GPU 2 Prediction:   0%|          | 92/71656 [00:11<2:23:41,  8.30it/s][A[A
+GPU 1 Prediction:   0%|          | 94/71656 [00:13<2:25:22,  8.20it/s][A
+
+
+GPU 3 Prediction:   0%|          | 76/71656 [00:09<2:22:33,  8.37it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 93/71656 [00:11<2:23:25,  8.32it/s][A[AGPU 0 Prediction:   0%|          | 91/71657 [00:15<2:30:53,  7.90it/s]
+GPU 1 Prediction:   0%|          | 95/71656 [00:13<2:25:27,  8.20it/s][A
+
+
+GPU 3 Prediction:   0%|          | 77/71656 [00:09<2:22:55,  8.35it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 94/71656 [00:11<2:23:17,  8.32it/s][A[AGPU 0 Prediction:   0%|          | 92/71657 [00:15<2:30:46,  7.91it/s]
+GPU 1 Prediction:   0%|          | 96/71656 [00:13<2:25:18,  8.21it/s][A
+
+
+GPU 3 Prediction:   0%|          | 78/71656 [00:09<2:23:15,  8.33it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 95/71656 [00:11<2:23:10,  8.33it/s][A[AGPU 0 Prediction:   0%|          | 93/71657 [00:15<2:31:12,  7.89it/s]
+GPU 1 Prediction:   0%|          | 97/71656 [00:14<2:25:22,  8.20it/s][A
+
+
+GPU 3 Prediction:   0%|          | 79/71656 [00:09<2:23:10,  8.33it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 96/71656 [00:11<2:23:05,  8.34it/s][A[AGPU 0 Prediction:   0%|          | 94/71657 [00:15<2:31:16,  7.88it/s]
+GPU 1 Prediction:   0%|          | 98/71656 [00:14<2:25:14,  8.21it/s][A
+
+
+GPU 3 Prediction:   0%|          | 80/71656 [00:09<2:22:59,  8.34it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 97/71656 [00:12<2:23:03,  8.34it/s][A[AGPU 0 Prediction:   0%|          | 95/71657 [00:15<2:31:05,  7.89it/s]
+GPU 1 Prediction:   0%|          | 99/71656 [00:14<2:25:07,  8.22it/s][A
+
+
+GPU 3 Prediction:   0%|          | 81/71656 [00:09<2:23:00,  8.34it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 98/71656 [00:12<2:23:16,  8.32it/s][A[AGPU 0 Prediction:   0%|          | 96/71657 [00:15<2:31:07,  7.89it/s]
+GPU 1 Prediction:   0%|          | 100/71656 [00:14<2:25:07,  8.22it/s][A
+
+
+GPU 3 Prediction:   0%|          | 82/71656 [00:10<2:23:12,  8.33it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 99/71656 [00:12<2:23:21,  8.32it/s][A[AGPU 0 Prediction:   0%|          | 97/71657 [00:15<2:31:04,  7.89it/s]
+GPU 1 Prediction:   0%|          | 101/71656 [00:14<2:24:59,  8.23it/s][A
+
+
+GPU 3 Prediction:   0%|          | 83/71656 [00:10<2:23:03,  8.34it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 100/71656 [00:12<2:23:19,  8.32it/s][A[AGPU 0 Prediction:   0%|          | 98/71657 [00:16<2:31:06,  7.89it/s]
+GPU 1 Prediction:   0%|          | 102/71656 [00:14<2:24:55,  8.23it/s][A
+
+
+GPU 3 Prediction:   0%|          | 84/71656 [00:10<2:22:46,  8.35it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 101/71656 [00:12<2:23:27,  8.31it/s][A[AGPU 0 Prediction:   0%|          | 99/71657 [00:16<2:31:21,  7.88it/s]
+GPU 1 Prediction:   0%|          | 103/71656 [00:14<2:24:51,  8.23it/s][A
+
+
+GPU 3 Prediction:   0%|          | 85/71656 [00:10<2:22:31,  8.37it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 102/71656 [00:12<2:23:21,  8.32it/s][A[AGPU 0 Prediction:   0%|          | 100/71657 [00:16<2:31:11,  7.89it/s]
+GPU 1 Prediction:   0%|          | 104/71656 [00:14<2:24:40,  8.24it/s][A
+
+
+GPU 3 Prediction:   0%|          | 86/71656 [00:10<2:22:24,  8.38it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 103/71656 [00:12<2:23:23,  8.32it/s][A[AGPU 0 Prediction:   0%|          | 101/71657 [00:16<2:31:33,  7.87it/s]
+GPU 1 Prediction:   0%|          | 105/71656 [00:15<2:25:15,  8.21it/s][A
+
+
+GPU 3 Prediction:   0%|          | 87/71656 [00:10<2:22:13,  8.39it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 104/71656 [00:12<2:23:14,  8.33it/s][A[AGPU 0 Prediction:   0%|          | 102/71657 [00:16<2:31:37,  7.87it/s]
+GPU 1 Prediction:   0%|          | 106/71656 [00:15<2:25:13,  8.21it/s][A
+
+
+GPU 3 Prediction:   0%|          | 88/71656 [00:10<2:22:00,  8.40it/s][A[A[A
+
+GPU 2 Prediction:   0%|          | 105/71656 [00:12<2:23:42,  8.30it/s][A[A
+GPU 1 Prediction:   0%|          | 107/71656 [00:15<2:25:00,  8.22it/s][A
+
+
+GPU 3 Prediction:   0%|          | 89/71656 [00:10<2:21:56,  8.40it/s][A[A[AGPU 0 Prediction:   0%|          | 103/71657 [00:16<2:31:33,  7.87it/s]
+
+GPU 2 Prediction:   0%|          | 106/71656 [00:13<2:23:50,  8.29it/s][A[A
+
+
+
+GPU 1 Prediction:   0%|          | 108/71656 [00:15<2:24:54,  8.23it/s][AGPU 3 Prediction:   0%|          | 90/71656 [00:10<2:21:55,  8.40it/s][A[A[AGPU 0 Prediction:   0%|          | 104/71657 [00:16<2:31:29,  7.87it/s]
+
+GPU 2 Prediction:   0%|          | 107/71656 [00:13<2:23:46,  8.29it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 91/71656 [00:11<2:21:55,  8.40it/s][A[A[A
+GPU 1 Prediction:   0%|          | 109/71656 [00:15<2:25:00,  8.22it/s][AGPU 0 Prediction:   0%|          | 105/71657 [00:17<2:31:25,  7.88it/s]
+
+GPU 2 Prediction:   0%|          | 108/71656 [00:13<2:23:48,  8.29it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 92/71656 [00:11<2:21:53,  8.41it/s][A[A[A
+GPU 1 Prediction:   0%|          | 110/71656 [00:15<2:24:47,  8.24it/s][AGPU 0 Prediction:   0%|          | 106/71657 [00:17<2:31:24,  7.88it/s]
+
+GPU 2 Prediction:   0%|          | 109/71656 [00:13<2:23:41,  8.30it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 93/71656 [00:11<2:21:51,  8.41it/s][A[A[A
+GPU 1 Prediction:   0%|          | 111/71656 [00:15<2:24:47,  8.24it/s][AGPU 0 Prediction:   0%|          | 107/71657 [00:17<2:31:24,  7.88it/s]
+
+GPU 2 Prediction:   0%|          | 110/71656 [00:13<2:23:49,  8.29it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 94/71656 [00:11<2:21:42,  8.42it/s][A[A[A
+GPU 1 Prediction:   0%|          | 112/71656 [00:15<2:24:47,  8.23it/s][AGPU 0 Prediction:   0%|          | 108/71657 [00:17<2:31:31,  7.87it/s]
+
+GPU 2 Prediction:   0%|          | 111/71656 [00:13<2:23:48,  8.29it/s][A[A
+
+
+GPU 3 Prediction:   0%|          | 95/71656 [00:11<2:21:51,  8.41it/s][A[A[A
+GPU 1 Prediction:   0%|          | 113/71656 [00:16<2:24:50,  8.23it/s][A
+
+GPU 2 Prediction:   0%|          | 112/71656 [00:13<2:23:48,  8.29it/s][A[AGPU 0 Prediction:   0%|          | 109/71657 [00:17<2:31:28,  7.87it/s]
+
+
+GPU 3 Prediction:   0%|          | 96/71656 [00:11<2:21:50,  8.41it/s][A[A[A
+GPU 1 Prediction:   0%|          | 114/71656 [00:16<2:24:56,  8.23it/s][A
+
+GPU 2 Prediction:   0%|          | 113/71656 [00:13<2:23:48,  8.29it/s][A[AGPU 0 Prediction:   0%|          | 110/71657 [00:17<2:31:35,  7.87it/s]
+
+
+GPU 3 Prediction:   0%|          | 97/71656 [00:11<2:21:55,  8.40it/s][A[A[A
+GPU 1 Prediction:   0%|          | 115/71656 [00:16<2:25:11,  8.21it/s][A
+
+GPU 2 Prediction:   0%|          | 114/71656 [00:14<2:23:42,  8.30it/s][A[AGPU 0 Prediction:   0%|          | 111/71657 [00:17<2:31:31,  7.87it/s]
+
+
+GPU 3 Prediction:   0%|          | 98/71656 [00:11<2:21:58,  8.40it/s][A[A[A
+GPU 1 Prediction:   0%|          | 116/71656 [00:16<2:25:14,  8.21it/s][A
+
+GPU 2 Prediction:   0%|          | 115/71656 [00:14<2:23:43,  8.30it/s][A[AGPU 0 Prediction:   0%|          | 112/71657 [00:17<2:31:30,  7.87it/s]
+
+
+GPU 3 Prediction:   0%|          | 99/71656 [00:12<2:21:59,  8.40it/s][A[A[A
+GPU 1 Prediction:   0%|          | 117/71656 [00:16<2:25:06,  8.22it/s][A
+
+GPU 2 Prediction:   0%|          | 116/71656 [00:14<2:23:50,  8.29it/s][A[AGPU 0 Prediction:   0%|          | 113/71657 [00:18<2:31:24,  7.88it/s]

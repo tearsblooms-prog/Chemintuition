@@ -36,7 +36,9 @@ def load_or_initialize_dictionaries():
 
 def save_dictionaries(chemical_to_id, id_to_chemical):
     """Saves dictionaries to JSON files."""
-    os.makedirs(os.path.dirname(CHEM_DICT_FILE), exist_ok=True)
+    dir_path = os.path.dirname(CHEM_DICT_FILE)
+    if dir_path:
+        os.makedirs(dir_path, exist_ok=True)
     with open(CHEM_DICT_FILE, 'w') as f:
         json.dump(chemical_to_id, f, indent=4)
     with open(ID_CHEM_DICT_FILE, 'w') as f:

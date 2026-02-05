@@ -1,8 +1,8 @@
-# Learned Interpretable Chemical Intuition Enables De Novo Catalytic Reaction Discovery
+# Learned interpretable chemical intuition enables automatic catalytic reaction discovery
 
 ## Project Overview
 
-ChemNavigator is a deep learning-based framework for autonomous chemical reaction discovery, focusing on uncovering potential new reactions from vast chemical spaces. The project integrates a reaction condition prediction model, **ReactNet**, with a reaction yield prediction model, **YieldMPNN**, capturing interpretable chemical intuition and simulating the reasoning process of human chemists. Through high-throughput computational screening, ChemNavigator successfully identified multiple high-yield candidate reactions, and experimental validation led to the discovery of four entirely new chemical reactions, providing a scalable solution for AI-driven chemical innovation.
+SeedNavi is a deep learning-based framework for autonomous chemical reaction discovery, focusing on uncovering potential new reactions from vast chemical spaces. The project integrates a reaction condition prediction model, **ReactNet**, with a reaction yield prediction model, **YieldMPNN**, capturing interpretable chemical intuition and simulating the reasoning process of human chemists. Through high-throughput computational screening, ChemNavigator successfully identified multiple high-yield candidate reactions, and experimental validation led to the discovery of four entirely new chemical reactions, providing a scalable solution for AI-driven chemical innovation.
 
 ## Key Features
 
@@ -111,7 +111,7 @@ If you use this project in your research, please cite:
 
 ```bibtex
 @article{paper,
-  title={Learned Interpretable Chemical Intuition Enables De Novo Catalytic Reaction Discovery},
+  title={Learned interpretable chemical intuition enables automatic catalytic reaction discovery},
   author={Jun Zhou},
   journal={},
   year={2025}
