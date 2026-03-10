@@ -11,7 +11,7 @@ from torch_geometric.data import Data, Batch
 from rdkit import RDLogger
 
 from data import ReactionDataset, ATOM_FEATURE_SIZE, EDGE_FEATURE_SIZE
-from model import YieldMPNN
+from model import YieldEvaluator
 
 RDLogger.DisableLog('rdApp.warning')
 
@@ -154,7 +154,7 @@ def main():
     std_t = torch.tensor(TRAIN_STD, device=device, dtype=torch.float)
 
     print(f"Loading model: {MODEL_PATH}")
-    model = YieldMPNN(node_in_feats=ATOM_FEATURE_SIZE, edge_in_feats=EDGE_FEATURE_SIZE,
+    model = YieldEvaluator(node_in_feats=ATOM_FEATURE_SIZE, edge_in_feats=EDGE_FEATURE_SIZE,
                      mpnn_hidden_feats=MPNN_HIDDEN_FEATS,
                      mpnn_num_step_message_passing=MPNN_NUM_STEP_MESSAGE_PASSING,
                      mpnn_readout_feats=MPNN_READOUT_FEATS,

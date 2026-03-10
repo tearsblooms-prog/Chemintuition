@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader, random_split
 from torch.optim.lr_scheduler import MultiStepLR
 import torch.nn as nn
 from data import ReactionDataset, ATOM_FEATURE_SIZE, EDGE_FEATURE_SIZE
-from model import YieldNet  # Using the newly updated model
+from model import YieldEvaluator  # Using the newly updated model
 from tqdm import tqdm
 import pandas as pd
 from torch_geometric.data import Data, Batch
@@ -140,7 +140,7 @@ def run_experiment(csv_path, npz_path, val_ratio, random_seed, experiment_name):
                               drop_last=True)
     val_loader = DataLoader(val_subset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_with_graphs)
 
-    model = YieldNet(node_in_feats=ATOM_FEATURE_SIZE, edge_in_feats=EDGE_FEATURE_SIZE,
+    model = YieldEvaluator(node_in_feats=ATOM_FEATURE_SIZE, edge_in_feats=EDGE_FEATURE_SIZE,
                      mpnn_hidden_feats=MPNN_HIDDEN_FEATS,
                      mpnn_num_step_message_passing=MPNN_NUM_STEP_MESSAGE_PASSING,
                      mpnn_readout_feats=MPNN_READOUT_FEATS,

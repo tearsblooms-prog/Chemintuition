@@ -27,9 +27,9 @@ except ImportError:
     sys.exit(1)
 
 try:
-    from model import AutoregressiveModel
+    from model import ConditionGen
     from data_utils import ReactionConditionTokenizer
-    from ChemSReactMPNN import DualChannelMPNN
+    from ChemSReactMPNN import ChemSReactMPNN
 except ImportError as e:
     print(f"Error: Required local files are missing.")
     print(f"ImportError: {e}")

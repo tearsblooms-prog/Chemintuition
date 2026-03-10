@@ -63,7 +63,7 @@ class ConditionalTransformerDecoderLayer(nn.Module):
         return tgt
 
 
-class AutoregressiveModel(nn.Module):
+class ConditionGen(nn.Module):
     def __init__(self, vocab_size, model_dim=256, num_layers=6, num_heads=8,
                  condition_dim=1024, dropout=0.1, max_seq_len=150):
         super().__init__()

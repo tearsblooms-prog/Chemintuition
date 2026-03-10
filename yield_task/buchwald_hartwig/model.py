@@ -88,7 +88,7 @@ class ChemSReactMPNN(nn.Module):
         return graph_feats, all_reactivity_gates
 
 
-class YieldMPNN(nn.Module):
+class YieldEvaluator(nn.Module):
     """
     Main reaction model, adapted for the dual-channel MPNN.
     - It collects reactivity gates from all molecules for the auxiliary sparsity loss.
@@ -101,7 +101,7 @@ class YieldMPNN(nn.Module):
                  mpnn_num_step_set2set=3, mpnn_num_layer_set2set=1,
                  mpnn_readout_feats=1024,
                  predict_hidden_feats=512, prob_dropout=0.1):
-        super(YieldMPNN, self).__init__()
+        super(YieldEvaluator, self).__init__()
         self.mpnn = ChemSReactMPNN(node_in_feats, edge_in_feats,
                          hidden_feats=mpnn_hidden_feats,
                          num_step_message_passing=mpnn_num_step_message_passing,
