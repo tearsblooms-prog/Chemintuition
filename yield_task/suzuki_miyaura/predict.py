@@ -15,7 +15,7 @@ from model import YieldEvaluator
 
 RDLogger.DisableLog('rdApp.warning')
 
-MODEL_PATH = 'results/suzuki_miyaura_DualChannel_Contrastive_seed46/best_model.pth'
+MODEL_PATH = 'results/best_model.pth'
 
 CLEANED_CSV_PATH = 'data/data/new_reaction_cleaned.csv'
 GRAPHS_NPZ_PATH = 'data/data/new_data_graphs.npz'

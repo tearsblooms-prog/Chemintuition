@@ -1,8 +1,8 @@
-# Learned interpretable chemical intuition enables automatic catalytic reaction discovery
+# Capturing interpretable chemist’s intuition enables high-yield catalytic reaction discovery
 
 ## Project Overview
 
-SeedNavi is a deep learning-based framework for autonomous chemical reaction discovery, focusing on uncovering potential new reactions from vast chemical spaces. The project integrates a reaction condition prediction model, **ReactNet**, with a reaction yield prediction model, **YieldMPNN**, capturing interpretable chemical intuition and simulating the reasoning process of human chemists. Through high-throughput computational screening, ChemNavigator successfully identified multiple high-yield candidate reactions, and experimental validation led to the discovery of four entirely new chemical reactions, providing a scalable solution for AI-driven chemical innovation.
+Intucovery is a deep learning-based framework for autonomous chemical reaction discovery, focusing on uncovering potential new reactions from vast chemical spaces. The project integrates a reaction condition prediction model, **ConditionGen**, with a reaction yield prediction model, **YieldEvaluator**, capturing interpretable chemical intuition and simulating the reasoning process of human chemists. Through high-throughput computational screening, ChemNavigator successfully identified multiple high-yield candidate reactions, and experimental validation led to the discovery of four entirely new chemical reactions, providing a scalable solution for AI-driven chemical innovation.
 
 ## Key Features
 
@@ -15,7 +15,7 @@ SeedNavi is a deep learning-based framework for autonomous chemical reaction dis
 
 ```
 ChemNavigator/
-|── reaction_space                  # Reaction space construction
+|── reaction_space                  # Reaction space construction 
 ├── yield_task/                     # Yield prediction tasks
 │   ├── suzuki_miyaura/            # Suzuki-Miyaura dataset yield prediction
 │   └── buchwald_hartwig/          # Buchwald-Hartwig dataset yield prediction
@@ -45,21 +45,22 @@ parameters and place them in the corresponding results folder.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/ChemNavigator.git
-cd ChemNavigator
+git clone https://github.com/GZU-SAMLab/Intucovery.git
+cd Intucovery
 ```
 
 2. Create a conda environment and install dependencies:
 ```bash
 conda env create -f environment.yml
-conda activate ChemNavigator
+conda activate Intucovery
 ```
 
 3. Construct the reaction space:
 ```bash
 # Build the chemical reaction space from reactants
 cd reaction_space
-python generate_from_pools.py
+python 1_build_fragment_pools.py
+python 2_generate_from_pools.py
 ```
 
 4. Run yield prediction:
@@ -73,7 +74,7 @@ python 2_generate_fingerprint.py
 python 3_preprocess_data.py
 
 cd ../
-python Train_YieldMPNN.py   # Train
+python train_10SEED.py   # Train
 python predict.py            # Predict
 
 # Buchwald-Hartwig yield prediction
@@ -85,7 +86,7 @@ python 2_generate_fingerprint.py
 python 3_preprocess_data.py
 
 cd ../
-python Run_YieldMPNN_Experiments.py
+python run_experiments_10seed.py
 ```
 
 5. Run condition prediction:
@@ -97,12 +98,12 @@ cd data
 python USTPO_condition_preprocess.py
 
 cd ../
-python train_ReactNet.py         # Train
+python train_ConditionGen_ReactNet.py         # Train
 python predict_conditions.py     # Predict
 
 # Reaxys condition prediction
 cd condition_task/Reaxys-TotalSyn-Condition
-python train_Reaxys.py           # Train
+python train_ConditionGen_Reaxys.py           # Train
 ```
 
 ## Citation
@@ -111,10 +112,11 @@ If you use this project in your research, please cite:
 
 ```bibtex
 @article{paper,
-  title={Learned interpretable chemical intuition enables automatic catalytic reaction discovery},
+  title={Capturing interpretable chemist’s intuition enables high-yield catalytic reaction
+discovery},
   author={Jun Zhou},
   journal={},
-  year={2025}
+  year={2026}
 }
 ```
 

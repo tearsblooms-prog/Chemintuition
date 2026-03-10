@@ -1,4 +1,4 @@
-name: ChemNavigator
+name: Intucovery
 channels:
   - pytorch
   - nvidia
