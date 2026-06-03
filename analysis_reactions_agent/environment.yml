@@ -1,0 +1,12 @@
+name: yieldnet-reaction-agent
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - rdkit>=2023.09
+  - mordredcommunity>=2.0
+  - pandas>=2.0
+  - numpy>=1.26
+  - scikit-learn>=1.4
+  - networkx>=3.2
+  - pip

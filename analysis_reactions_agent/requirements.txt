@@ -1,0 +1,2 @@
+# Prefer the conda environment defined in environment.yml.
+# The Agent now relies on RDKit-enabled cheminformatics support.

@@ -1,1 +1,21 @@
 reaction_space/yield_predict/predictions_output.csv
+
+# Local IDE settings
+.idea/
+
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+
+# Local backups
+*~
+
+# Local secrets
+.env
+*_api_key.txt
+
+# Agent runtime outputs
+analysis_reactions_agent/data/*_ranked.csv
+analysis_reactions_agent/data/*_raw.jsonl
+analysis_reactions_agent/data/*_progress.txt
+analysis_reactions_agent/data/*_feasibility_progress.txt

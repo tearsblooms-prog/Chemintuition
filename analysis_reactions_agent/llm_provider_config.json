@@ -1,0 +1,15 @@
+{
+  "provider": "gemini",
+  "providers": {
+    "gemini": {
+      "model": "",
+      "api_url": "",
+      "api_key_file": "gemini_api_key.txt"
+    },
+    "deepseek": {
+      "model": "",
+      "api_url": "",
+      "api_key_file": "deepseek_api_key.txt"
+    }
+  }
+}
