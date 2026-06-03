@@ -1,8 +1,8 @@
-# Capturing interpretable chemist’s intuition enables high-yield catalytic reaction discovery
+# Chemist's intuition-driven exploration enables non-obvious reaction discovery beyond reaction space
 
 ## Project Overview
 
-Intucovery is a deep learning-based framework for autonomous chemical reaction discovery, focusing on uncovering potential new reactions from vast chemical spaces. The project integrates a reaction condition prediction model, **ConditionGen**, with a reaction yield prediction model, **YieldEvaluator**, capturing interpretable chemical intuition and simulating the reasoning process of human chemists. Through high-throughput computational screening, ChemNavigator successfully identified multiple high-yield candidate reactions, and experimental validation led to the discovery of four entirely new chemical reactions, providing a scalable solution for AI-driven chemical innovation.
+Chemintuition is a deep learning-based framework for autonomous chemical reaction discovery, focusing on uncovering potential new reactions from vast chemical spaces. The project integrates a reaction condition prediction model, **ConditionGen**, with a reaction yield prediction model, **YieldEvaluator**, capturing interpretable chemical intuition and simulating the reasoning process of human chemists. Through high-throughput computational screening, ChemNavigator successfully identified multiple high-yield candidate reactions, and experimental validation led to the discovery of four entirely new chemical reactions, providing a scalable solution for AI-driven chemical innovation.
 
 ## Key Features
 
@@ -47,14 +47,14 @@ parameters and place them in the corresponding results folder.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/GZU-SAMLab/Intucovery.git
-cd Intucovery
+git clone https://github.com/tearsblooms-prog/Chemintuition.git
+cd Chemintuition
 ```
 
 2. Create a conda environment and install dependencies:
 ```bash
 conda env create -f environment.yml
-conda activate Intucovery
+conda activate Chemintuition
 ```
 
 3. Construct the reaction space:
