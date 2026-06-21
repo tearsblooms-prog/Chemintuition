@@ -15,11 +15,8 @@ from rdkit import RDLogger
 from functools import partial
 import time
 
-# 禁用 RDKit 的一些警告信息，保持输出整洁
 RDLogger.DisableLog('rdApp.warning')
 
-# --- 原始配置参数 ---
-# 注意: 为了加快示例运行速度，您可以适当减少 EPOCHS 的数量
 BATCH_SIZE = 16
 EPOCHS = 250
 LEARNING_RATE = 0.00036402483412231295
@@ -35,8 +32,6 @@ PROB_DROPOUT = 0.19174391519919806
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-
-# --- 原始脚本中的辅助函数 (无需修改) ---
 
 def _load_condition_graph(chem_id: int, graph_store) -> Data:
     x = torch.from_numpy(graph_store[f'chem_x_{chem_id}'])
@@ -121,7 +116,6 @@ def run_evaluation_with_uncertainty(model_to_eval, dataloader, current_device, m
     mean_pred = torch.mean(preds_scaled, dim=0)
     y_true_np, y_pred_np = y_true.cpu().numpy(), mean_pred.cpu().numpy()
 
-    # 防止验证集为空时出错
     if len(y_true_np) == 0:
         return np.nan, np.nan, np.nan
 
@@ -129,32 +123,22 @@ def run_evaluation_with_uncertainty(model_to_eval, dataloader, current_device, m
         y_true_np, y_pred_np)
 
 
-# --- 修改后的 run_experiment 函数 ---
-# 增加了返回值，用于收集最佳性能指标
 def run_experiment(csv_path, npz_path, val_ratio, random_seed, experiment_name):
-    """
-    运行单次训练和评估实验。
 
-    返回:
-        dict: 包含最佳 MAE, RMSE 和 R2 的字典。
-    """
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"\n▶️ 开始实验: {experiment_name} on {device}")
+    print(f"\nstart: {experiment_name} on {device}")
     results_dir = os.path.join('results', experiment_name)
     os.makedirs(results_dir, exist_ok=True)
 
     try:
         dataset = ReactionDataset(csv_path, npz_path)
     except FileNotFoundError:
-        print(f"错误: 无法找到数据文件 {csv_path} 或 {npz_path}。请检查路径。")
         return {'mae': np.nan, 'rmse': np.nan, 'r2': np.nan}
 
     val_size = int(len(dataset) * val_ratio)
     train_size = len(dataset) - val_size
 
-    # 确保训练集至少有一个样本
     if train_size == 0:
-        print(f"警告: 划分比例 {val_ratio} 导致训练集大小为0。跳过此次实验。")
         return {'mae': np.nan, 'rmse': np.nan, 'r2': np.nan}
 
     train_subset, val_subset = random_split(dataset, [train_size, val_size],
@@ -230,31 +214,20 @@ def run_experiment(csv_path, npz_path, val_ratio, random_seed, experiment_name):
             {'epoch': epoch, 'train_loss': avg_train_loss, 'val_mae': val_mae, 'val_rmse': val_rmse, 'val_r2': val_r2})
 
     pd.DataFrame(history).to_csv(os.path.join(results_dir, 'training_history.csv'), index=False)
-    print(f"✅ 完成 '{experiment_name}': 最佳验证 MAE={best_val_mae:.4f}")
+    print(f" '{experiment_name}': best MAE={best_val_mae:.4f}")
 
     return {'mae': best_val_mae, 'rmse': best_val_rmse, 'r2': best_val_r2}
 
 
-# --- ★★★ 修改: 主执行模块 ★★★ ---
 def main():
-    """
-    主函数，用于执行所有实验并生成结果报告。
-    """
-    # 定义要测试的验证集比例和总共10个随机种子
     SPLIT_RATIOS = [0.3, 0.5, 0.7, 0.8, 0.9, 0.95, 0.975]
 
-    # 扩展到10个种子：保留原来的 [46, 47, 124]，并添加7个新的
-    # 你可以修改这7个新种子的值
     SEEDS = [46, 47, 124, 42, 88, 99, 101, 256, 512, 1024]
-    print(f"ℹ️ 将为 {len(SEEDS)} 个种子运行实验: {SEEDS}")
 
-    # 数据文件路径
     CLEANED_CSV_PATH = '../data/buchwald_hartwig_cleaned.csv'
     GRAPHS_NPZ_PATH = '../data/preprocessed_graphs.npz'
 
-    # 检查核心数据文件是否存在
     if not os.path.exists(CLEANED_CSV_PATH) or not os.path.exists(GRAPHS_NPZ_PATH):
-        print(f"错误: 核心数据文件未找到。请确保 '{CLEANED_CSV_PATH}' 和 '{GRAPHS_NPZ_PATH}' 存在。")
         return
 
     all_results = []
@@ -266,7 +239,6 @@ def main():
         val_ratio_percent = val_ratio * 100
 
         print("\n" + "=" * 60)
-        print(f"🚀 开始新一轮划分比例: (训练/验证): {train_ratio_percent:.1f}/{val_ratio_percent:.1f}")
         print("=" * 60)
 
         for seed in SEEDS:
@@ -275,20 +247,15 @@ def main():
             results_dir = os.path.join('results', experiment_name)
             history_file_path = os.path.join(results_dir, 'training_history.csv')
 
-            # ★★★ 新增逻辑: 检查结果是否已存在 ★★★
             if os.path.exists(history_file_path):
-                print(f"✅ 实验 '{experiment_name}' 结果已存在，正在加载...")
                 try:
                     history_df = pd.read_csv(history_file_path)
-                    # 确保 val_mae 列是数值类型，并丢弃 NaN
                     history_df['val_mae'] = pd.to_numeric(history_df['val_mae'], errors='coerce')
                     history_df = history_df.dropna(subset=['val_mae'])
 
                     if history_df.empty:
-                        print(f"   ...警告: 历史文件 '{history_file_path}' 为空或无有效MAE，将跳过。")
                         best_metrics = {'mae': np.nan, 'rmse': np.nan, 'r2': np.nan}
                     else:
-                        # 找到最佳MAE对应的行
                         best_epoch_idx = history_df['val_mae'].idxmin()
                         best_row = history_df.loc[best_epoch_idx]
                         best_metrics = {
@@ -296,13 +263,9 @@ def main():
                             'rmse': best_row['val_rmse'],
                             'r2': best_row['val_r2']
                         }
-                        print(f"   ...加载成功: 最佳 MAE={best_metrics['mae']:.4f}")
                 except Exception as e:
-                    print(f"   ...❌ 加载 '{history_file_path}' 失败: {e}。将跳过此种子。")
                     best_metrics = {'mae': np.nan, 'rmse': np.nan, 'r2': np.nan}
             else:
-                # 结果不存在，正常运行实验
-                print(f"🚀 实验 '{experiment_name}' 结果不存在，开始新实验...")
                 print("-" * 60)
                 best_metrics = run_experiment(
                     csv_path=CLEANED_CSV_PATH,
@@ -312,48 +275,38 @@ def main():
                     experiment_name=experiment_name
                 )
 
-            # 收集结果 (无论是加载的还是新跑的)
             results_for_ratio.append(best_metrics)
 
-        # 汇总当前划分比例下的所有种子结果
         maes = [r['mae'] for r in results_for_ratio if not np.isnan(r['mae'])]
         rmses = [r['rmse'] for r in results_for_ratio if not np.isnan(r['rmse'])]
         r2s = [r['r2'] for r in results_for_ratio if not np.isnan(r['r2'])]
 
-        if maes:  # 仅当成功运行时才记录
+        if maes:
             all_results.append({
                 'val_ratio': val_ratio,
                 'mae_mean': np.mean(maes), 'mae_std': np.std(maes),
                 'rmse_mean': np.mean(rmses), 'rmse_std': np.std(rmses),
                 'r2_mean': np.mean(r2s), 'r2_std': np.std(r2s),
-                'num_seeds': len(maes)  # ★ 新增：记录实际汇总了多少个种子的结果
+                'num_seeds': len(maes)
             })
 
     end_time = time.time()
-    total_duration = (end_time - start_time) / 60
-    print(f"\n\n所有实验已完成，总耗时: {total_duration:.2f} 分钟。")
 
-    # --- 格式化并打印最终的结果表格 ---
     if not all_results:
-        print("没有可供汇总的有效实验结果。")
         return
 
     results_df = pd.DataFrame(all_results)
 
-    # 创建符合要求的最终表格
     final_table = pd.DataFrame()
     final_table['Model'] = ['YieldEvaluator'] * len(results_df)
 
-    # 格式化划分比例
     def format_split(r):
         train_p = 100 * (1 - r)
         val_p = 100 * r
-        # 如果是整数，则不显示小数点
         return f"{int(train_p) if train_p == int(train_p) else f'{train_p:.1f}'}/{int(val_p) if val_p == int(val_p) else f'{val_p:.1f}'}"
 
     final_table['Split Ratio (Train/Val)'] = results_df['val_ratio'].apply(format_split)
 
-    # 格式化性能指标
     final_table['MAE'] = results_df.apply(
         lambda row: f"{row['mae_mean']:.3f} ± {row['mae_std']:.3f}", axis=1
     )
@@ -363,22 +316,17 @@ def main():
     final_table['R²'] = results_df.apply(
         lambda row: f"{row['r2_mean']:.3f} ± {row['r2_std']:.3f}", axis=1
     )
-    # ★ 新增：显示用于计算的种子数
     final_table['Seeds (N)'] = results_df['num_seeds'].astype(int)
 
-    print("\n\n" + "🎉" * 15 + " 实验结果汇总 " + "🎉" * 15)
-    # 使用 to_string() 保证对齐打印
     print(final_table.to_string(index=False))
-    print("\n" + "=" * (55 + len("Seeds (N)") + 3))  # 调整分隔线宽度
+    print("\n" + "=" * (55 + len("Seeds (N)") + 3))
 
-    # 保存表格到本地文件
     try:
         final_table.to_csv('experiment_summary_formatted_10_seeds.csv', index=False)
-        print("\n✅ 结果已成功保存到 'experiment_summary_formatted_10_seeds.csv'")
+        print("\nsave to 'experiment_summary_formatted_10_seeds.csv'")
     except Exception as e:
-        print(f"\n❌ 保存结果失败: {e}")
+        print(f"\n : {e}")
 
 
 if __name__ == "__main__":
-    # 运行主程序
     main()
