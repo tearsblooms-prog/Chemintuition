@@ -283,7 +283,7 @@ mpnn_model = ChemSReactMPNN(
     readout_feats=MPNN_READOUT_FEATS
 ).to(device)
 
-model = AutoregressiveModel(
+model = ConditionGen(
     vocab_size=VOCAB_SIZE, model_dim=EMBEDDING_DIM,
     num_layers=TRANSFORMER_LAYERS, num_heads=TRANSFORMER_HEADS,
     condition_dim=MPNN_READOUT_FEATS * 2, max_seq_len=MAX_TOKEN_SEQ_LEN
